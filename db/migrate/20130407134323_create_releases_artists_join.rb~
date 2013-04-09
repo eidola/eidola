@@ -1,0 +1,11 @@
+class CreateReleasesArtistsJoin < ActiveRecord::Migration
+  def up
+    create_table :artists_releases, :id => false do |t|
+    t.column :artist_id, :integer
+    t.column :release_id, :integer
+  end
+
+  def down
+    drop_table :artists_releases
+  end
+end

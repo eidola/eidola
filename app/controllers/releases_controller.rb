@@ -1,4 +1,5 @@
 class ReleasesController < ApplicationController
+  autocomplete :artist, :name
   # GET /releases
   # GET /releases.json
   def index
@@ -25,7 +26,7 @@ class ReleasesController < ApplicationController
   # GET /releases/new.json
   def new
     @release = Release.new
-    @artists = Artist.all.collect(&:name)
+    @artists = Artist.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @release }
@@ -41,9 +42,10 @@ class ReleasesController < ApplicationController
   # POST /releases.json
   def create
     @release = Release.new(params[:release])
-
+    
     respond_to do |format|
       if @release.save
+       
         format.html { redirect_to @release, notice: 'Release was successfully created.' }
         format.json { render json: @release, status: :created, location: @release }
       else

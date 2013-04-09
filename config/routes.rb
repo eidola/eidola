@@ -2,8 +2,9 @@ Eidola::Application.routes.draw do
   resources :artists
 
 
-  resources :releases
-
+  resources :releases do
+    get :autocomplete_artist_name, :on => :collection
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
