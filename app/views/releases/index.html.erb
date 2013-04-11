@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Title</th>
+    <th>Artist</th>
     <th>Description</th>
     <th>Cover url</th>
     <th></th>
@@ -13,6 +14,11 @@
 <% @releases.each do |release| %>
   <tr>
     <td><%= release.title %></td>
+    <td>
+    <% release.artists.each do |artist| %>
+      <%= link_to artist.name, artist %><br/>
+    <% end %>
+    </td>
     <td><%= release.description %></td>
     <td><%= release.cover_url %></td>
     <td><%= link_to 'Show', release %></td>
