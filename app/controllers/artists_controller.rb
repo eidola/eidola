@@ -1,4 +1,5 @@
 class ArtistsController < ApplicationController
+  skip_before_filter :authorize
   # GET /artists
   # GET /artists.json
   def index

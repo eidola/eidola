@@ -1,4 +1,5 @@
 class ReleasesController < ApplicationController
+  skip_before_filter :authorize
   autocomplete :artist, :name
   # GET /releases
   # GET /releases.json
@@ -26,7 +27,7 @@ class ReleasesController < ApplicationController
   # GET /releases/new.json
   def new
     @release = Release.new
-    @artists = Artist.all
+    @artists = Artist.order(:name)
     1.times { @release.tracks.build }
     respond_to do |format| 
       format.html # new.html.erb
