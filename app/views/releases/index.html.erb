@@ -20,7 +20,7 @@
     <% end %>
     </td>
     <td><%= release.description %></td>
-    <td><%= release.cover_url %></td>
+    <td><%= image_tag release.cover.url(:thumb) %></td>
     <td><%= link_to 'Show', release %></td>
     <td><%= link_to 'Edit', edit_release_path(release) %></td>
     <td><%= link_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' } %></td>

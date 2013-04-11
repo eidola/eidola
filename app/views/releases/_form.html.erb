@@ -25,9 +25,9 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <label for="upload_file">Select File</label> : 
-    <%= file_field 'upload', 'datafile' %></p>
-</div>
+    <%= f.label :cover %>
+    <%= f.file_field :cover %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

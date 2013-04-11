@@ -1,7 +1,8 @@
 class Release < ActiveRecord::Base
   has_many :artist_releases
   has_many :artists, :through => :artist_releases
-  attr_accessible :cover_url, :description, :title, :artist_name
+  attr_accessible :cover_url, :description, :title, :artist_name, :cover
+  has_attached_file :cover, :styles => { :medium => "300x300", :thumb => "100x100" }, :default_url => "/public/releases/:id/cover.png"
   def artist_name
     @a = ""
     artists.each do | artist|
