@@ -5,6 +5,7 @@
     <th>Title</th>
     <th>Artist</th>
     <th>Description</th>
+    <th>Tracks</th>
     <th>Cover url</th>
     <th></th>
     <th></th>
@@ -20,6 +21,13 @@
     <% end %>
     </td>
     <td><%= release.description %></td>
+    <td>
+      <ul>
+	<% for track in release.tracks %>
+          <li><%= track.title %></li>
+	<% end %>
+      </ul>
+    </td>
     <td><%= image_tag release.cover.url(:thumb) %></td>
     <td><%= link_to 'Show', release %></td>
     <td><%= link_to 'Edit', edit_release_path(release) %></td>

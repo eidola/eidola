@@ -25,6 +25,12 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.fields_for :tracks do |t| %>
+      <%= render 'track_fields', :f => t %>
+    <% end %>
+    <%= link_to_add_fields "Add Track", f, :tracks %>
+  </div>
+  <div class="field">
     <%= f.label :cover %>
     <%= f.file_field :cover %>
   </div>

@@ -27,7 +27,8 @@ class ReleasesController < ApplicationController
   def new
     @release = Release.new
     @artists = Artist.all
-    respond_to do |format|
+    1.times { @release.tracks.build }
+    respond_to do |format| 
       format.html # new.html.erb
       format.json { render json: @release }
     end
