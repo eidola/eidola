@@ -1,20 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @release.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @release.description %>
-</p>
-
-<p>
-  <b>Cover url:</b>
-  <%= @release.cover_url %>
-</p>
-
-
-<%= link_to 'Edit', edit_release_path(@release) %> |
+<div id="content">
+  <div id="releases">
+    <h2><%= @release.title %></h2>
+    <div class="release">
+      <div class="title">
+	<% @release.artists.each do |artist| %>
+	  <%= link_to artist.name, artist %> / 
+	<% end %>
+      </div>
+      <div class="description">
+	<div class="textwrapper"><p><%= @release.description %></p>
+	<ol>
+	  <% @release.tracks.each do | track | %>
+	    <li><%= track.title %></li>
+	  <% end %>
+	</ul>  
+	</div>
+	<div class="imgwrapper">
+	  <img src='<%= @release.cover.url(:medium) %>'/>
+	</div>
+      </div>
+    </div>
+<% if session[:user_id] %>
+  <%= link_to 'Edit', edit_release_path(@release) %> |
+<% end %>
 <%= link_to 'Back', releases_path %>
+  </div>
+</div>

@@ -1,45 +1,30 @@
-<h1>Listing releases</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Artist</th>
-    <th>Description</th>
-    <th>Tracks</th>
-    <th>Cover url</th>
-    <% if session[:user_id] %>
-      <th></th>
-      <th></th>
-      <th></th>
-    <% end %>
-  </tr>
-
-<% @releases.each do |release| %>
-  <tr>
-    <td><%= release.title %></td>
-    <td>
-    <% release.artists.each do |artist| %>
-      <%= link_to artist.name, artist %><br/>
-    <% end %>
-    </td>
-    <td><%= release.description %></td>
-    <td>
+<div id="content">
+  <div id="releases">
+    <h2>RELEASES</h2>
+    <% @releases.each do |release| %>
+    <div class="release">
+      <div class="title">
+	<%= link_to release.title, release %> |  
+	    <% release.artists.each do |artist| %>
+	    <%= link_to artist.name, artist %> / 
+	    <% end %>
+      </div>
+      <div class="description">
+	<div class="textwrapper"><p><%= release.description %></p></div>	
+	<div class="imgwrapper">
+	  <img src='<%= release.cover.url(:medium) %>'/>
+	</div>
+      </div>
       <ul>
-	<% for track in release.tracks %>
-          <li><%= track.title %></li>
-	<% end %>
+	<% if session[:user_id] %>
+	  <li><%= link_to 'Show', release %></li>
+	  <li><%= link_to 'Edit', edit_release_path(release) %></li>
+	  <li><%= link_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+	  <% end %>
       </ul>
-    </td>
-    <td><%= image_tag release.cover.url(:thumb) %></td>
-    <% if session[:user_id] %>
-      <td><%= link_to 'Show', release %></td>
-      <td><%= link_to 'Edit', edit_release_path(release) %></td>
-      <td><%= link_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </div>    
     <% end %>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Release', new_release_path %>
+    <br />
+    <%= link_to 'New Release', new_release_path %>
+  </div>
+</div>
