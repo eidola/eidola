@@ -1,18 +1,66 @@
 // Place all the styles related to the Releases controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#releases{ width:90%;margin:0 auto;}
-#releases > .release{ height:275px;}
-#releases > .release > .title {margin-bottom:15px;}
-#releases > .release >.description {height:200px; width:100%;background:#FFC0CB;margin-top:2px;}
-#releases > .release > .description > .textwrapper {margin-left: 200px;height:200px;overflow:hidden;}
-#releases > .release > .description > .imgwrapper{margin-top:-210px; margin-left:-10px; height:200px; width:200px; overflow:hidden;}
-#releases > .release > .description > p {}
-.release ul {list-style-type:none; font-size:0.8em;float:right;}
-.release ul > li {float:left;margin-left:10px;}
-#release{ width:90%;margin:0 auto;}
-#release > .release{ height:275px; }
-#release > .release > .title {margin-bottom:15px;}
-#release > .release >.description { height:200px; width:100%;background:#FFC0CB;margin-top:2px;}
-#releases > .release > .description > .textwrapper {margin-left: 200px;height:200px;overflow:hidden;}
-#releases > .release > .description > .imgwrapper{margin-top:-210px; margin-left:-10px; height:200px; width:200px; overflow:hidden;}
+
+
+
+#releases, #release { width:90%;margin:0 auto;}
+#releases > .release{ 
+    height:275px;
+    .title {margin-bottom:15px;}
+    .description {
+	height:200px; 
+	width:100%;
+	background:#FFC0CB;
+	margin-top:2px;
+	.textwrapper {
+	    margin-left: 200px;
+	    height:200px;
+	    overflow:hidden;
+	}
+	.imgwrapper {
+	    margin-top:-210px; 
+	    margin-left:-10px; 
+	    height:200px; 
+	    width:200px; 
+	    overflow:hidden;
+	}
+	p {}
+
+    }
+    ul { 
+	list-style-type:none; 
+	font-size:0.8em;
+	float:right;
+	li {
+	    float:left;
+	    margin-left:10px;
+	}
+}
+}
+#release > .release{ 
+    min-height:275px;
+    .description {
+	min-height:200px;
+	width: 100%;
+	background: #FFC0CB;
+	margin-top:12px;
+	margin-bottom: 10px;
+    }
+    .imgwrapper {
+	position:absolute;
+	margin-top:-10px;
+	margin-left: -10px;
+	height:200px;
+	width:200px;
+	overflow:hidden;
+    }
+    .textwrapper {
+	margin-left:200px;
+	padding-bottom: 10px;
+    }
+}
+
+
+
+

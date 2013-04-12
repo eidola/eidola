@@ -10,6 +10,9 @@
 	<% end %>
       </div>
       <div class="description">
+	<div class="imgwrapper">
+	  <img src='<%= @release.cover.url(:medium) %>'/>
+	</div>
 	<div class="textwrapper">
 	  <p><%= @release.description =%></p>
 	  <p><%= link_to 'Download', @release.zip.url =%>  
@@ -18,9 +21,6 @@
 	    <li><%= track.title %></li>
 	  <% end %>
 	</ul>  
-	</div>
-	<div class="imgwrapper">
-	  <img src='<%= @release.cover.url(:medium) %>'/>
 	</div>
       </div>
     </div>
