@@ -1,0 +1,198 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+body{width:960px;margin: 0 auto; font-family:"Droid Sans",sans-serif;color:#777}
+h1 {font-size:1.5em;font-weight:normal;}
+h2 {font-size:1;font-weight:normal;}
+p{font-size:0.8em;}
+#header{height:100px; width:100%; margin-top:1em;}
+#navigation > li {list-style-type:none;float: left; margin-right:2em;}
+#sidebar {width: 300px; float:right; border-left: 1px solid #000; height:100%;}
+#content { border-left:1px solid #000; margin-right: 310px;height:100%;}
+#content > div {width:90%; margin:0 auto;}
+#sidebar > .feature{height:240px;width:200px;margin:20px auto;background:#FFC0CB;}
+#sidebar > .feature > div {height:198px; width:198px;border:1px solid #FFC0CB;; overflow:hidden;margin: 0 auto;}
+#sidebar > .feature > div > img {width:200px;}
+#sidebar > .feature > p {text-transform:uppercase;text-align:center; font-size: 0.7em; font-style:uppercase;}
+/* line 4, ../../app/assets/stylesheets/releases.css.scss */
+#releases {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* line 5, ../../app/assets/stylesheets/releases.css.scss */
+#releases > .release {
+  height: 275px;
+}
+
+/* line 6, ../../app/assets/stylesheets/releases.css.scss */
+#releases > .release > .title {
+  margin-bottom: 15px;
+}
+
+/* line 7, ../../app/assets/stylesheets/releases.css.scss */
+#releases > .release > .description {
+  height: 200px;
+  width: 100%;
+  background: #FFC0CB;
+  margin-top: 2px;
+}
+
+/* line 8, ../../app/assets/stylesheets/releases.css.scss */
+#releases > .release > .description > .textwrapper {
+  margin-left: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+/* line 9, ../../app/assets/stylesheets/releases.css.scss */
+#releases > .release > .description > .imgwrapper {
+  margin-top: -210px;
+  margin-left: -10px;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+}
+
+/* line 11, ../../app/assets/stylesheets/releases.css.scss */
+.release ul {
+  list-style-type: none;
+  font-size: 0.8em;
+  float: right;
+}
+
+/* line 12, ../../app/assets/stylesheets/releases.css.scss */
+.release ul > li {
+  float: left;
+  margin-left: 10px;
+}
+
+/* line 13, ../../app/assets/stylesheets/releases.css.scss */
+#release {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* line 14, ../../app/assets/stylesheets/releases.css.scss */
+#release > .release {
+  height: 275px;
+}
+
+/* line 15, ../../app/assets/stylesheets/releases.css.scss */
+#release > .release > .title {
+  margin-bottom: 15px;
+}
+
+/* line 16, ../../app/assets/stylesheets/releases.css.scss */
+#release > .release > .description {
+  height: 200px;
+  width: 100%;
+  background: #FFC0CB;
+  margin-top: 2px;
+}
+
+/* line 17, ../../app/assets/stylesheets/releases.css.scss */
+#releases > .release > .description > .textwrapper {
+  margin-left: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+/* line 18, ../../app/assets/stylesheets/releases.css.scss */
+#releases > .release > .description > .imgwrapper {
+  margin-top: -210px;
+  margin-left: -10px;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+}
+/* line 1, ../../app/assets/stylesheets/scaffolds.css.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 9, ../../app/assets/stylesheets/scaffolds.css.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 15, ../../app/assets/stylesheets/scaffolds.css.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 21, ../../app/assets/stylesheets/scaffolds.css.scss */
+a {
+  color: #000;
+}
+/* line 23, ../../app/assets/stylesheets/scaffolds.css.scss */
+a:visited {
+  color: #666;
+}
+/* line 26, ../../app/assets/stylesheets/scaffolds.css.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 33, ../../app/assets/stylesheets/scaffolds.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 38, ../../app/assets/stylesheets/scaffolds.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 42, ../../app/assets/stylesheets/scaffolds.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 48, ../../app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 55, ../../app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 65, ../../app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}

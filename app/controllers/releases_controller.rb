@@ -88,8 +88,8 @@ class ReleasesController < ApplicationController
   end
   def download_release(release)
     if release.tracks.count >0
-      file_name = "#{release.title}.zip"
-      t = Tempfile.new(file_name)
+      file_name = "#{release.title}"
+      t = Tempfile.new([file_name,'.zip'])
       Zip::ZipOutputStream.open(t.path) do |z|
         release.tracks.each do |track|
           title = track.file_file_name
@@ -97,13 +97,15 @@ class ReleasesController < ApplicationController
           z.print IO.read(track.file.path)
         end
         if !release.cover.blank?
-          cover = release.cover_file_name
+          extension = File.extname(release.cover.path).downcase
+          cover = "cover#{extension}"
           z.put_next_entry(cover)
           z.print IO.read(release.cover.path)
         end
       end
       stream = File.open(t.path)
       release.zip = stream
+      release.zip_file_name = "#{file_name}.zip"
       stream.close
       t.close
       release.save

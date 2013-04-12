@@ -10,3 +10,9 @@
 #releases > .release > .description > p {}
 .release ul {list-style-type:none; font-size:0.8em;float:right;}
 .release ul > li {float:left;margin-left:10px;}
+#release{ width:90%;margin:0 auto;}
+#release > .release{ height:275px; }
+#release > .release > .title {margin-bottom:15px;}
+#release > .release >.description { height:200px; width:100%;background:#FFC0CB;margin-top:2px;}
+#releases > .release > .description > .textwrapper {margin-left: 200px;height:200px;overflow:hidden;}
+#releases > .release > .description > .imgwrapper{margin-top:-210px; margin-left:-10px; height:200px; width:200px; overflow:hidden;}
