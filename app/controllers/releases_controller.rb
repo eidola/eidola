@@ -1,6 +1,7 @@
 class ReleasesController < ApplicationController
-  skip_before_filter :authorize
+  skip_before_filter :authorize, only: [:index, :show]
   autocomplete :artist, :name
+  
   # GET /releases
   # GET /releases.json
   def index
@@ -16,7 +17,7 @@ class ReleasesController < ApplicationController
   # GET /releases/1.json
   def show
     @release = Release.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @release }
@@ -47,7 +48,7 @@ class ReleasesController < ApplicationController
     
     respond_to do |format|
       if @release.save
-       
+        download_release(@release)
         format.html { redirect_to @release, notice: 'Release was successfully created.' }
         format.json { render json: @release, status: :created, location: @release }
       else
@@ -61,9 +62,10 @@ class ReleasesController < ApplicationController
   # PUT /releases/1.json
   def update
     @release = Release.find(params[:id])
-
+    
     respond_to do |format|
       if @release.update_attributes(params[:release])
+        download_release(@release)
         format.html { redirect_to @release, notice: 'Release was successfully updated.' }
         format.json { head :no_content }
       else
@@ -84,4 +86,28 @@ class ReleasesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def download_release(release)
+    if release.tracks.count >0
+      file_name = "#{release.title}.zip"
+      t = Tempfile.new(file_name)
+      Zip::ZipOutputStream.open(t.path) do |z|
+        release.tracks.each do |track|
+          title = track.file_file_name
+          z.put_next_entry(title)
+          z.print IO.read(track.file.path)
+        end
+        if !release.cover.blank?
+          cover = release.cover_file_name
+          z.put_next_entry(cover)
+          z.print IO.read(release.cover.path)
+        end
+      end
+      stream = File.open(t.path)
+      release.zip = stream
+      stream.close
+      t.close
+      release.save
+    end              
+  end
+
 end

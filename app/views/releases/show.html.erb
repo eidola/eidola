@@ -10,7 +10,9 @@
 	<% end %>
       </div>
       <div class="description">
-	<div class="textwrapper"><p><%= @release.description %></p>
+	<div class="textwrapper">
+	  <p><%= @release.description =%></p>
+	  <p><%= link_to 'Download', @release.zip.url =%>  
 	<ol>
 	  <% @release.tracks.each do | track | %>
 	    <li><%= track.title %></li>

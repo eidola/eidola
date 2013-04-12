@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411145006) do
+ActiveRecord::Schema.define(:version => 20130412082228) do
 
   create_table "artist_releases", :force => true do |t|
     t.integer  "artist_id"
@@ -50,6 +50,10 @@ ActiveRecord::Schema.define(:version => 20130411145006) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.string   "zip_file_name"
+    t.string   "zip_content_type"
+    t.integer  "zip_file_size"
+    t.datetime "zip_updated_at"
   end
 
   create_table "tracks", :force => true do |t|
