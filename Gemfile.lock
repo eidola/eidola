@@ -137,3 +137,4 @@ DEPENDENCIES
   rubyzip
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
+  uuidtools (~> 2.1.3)
