@@ -67,7 +67,9 @@ Eidola::Application.configure do
 
   # Paperclip
   config.paperclip_defaults = {
-    :url => 'https://s3-eu-west-1.amazonaws.com',
+    :default_options => {
+      :url => 'https://s3-eu-west-1.amazonaws.com'
+    }
     :storage => :s3,
     :s3_credentials => {
       :bucket => ENV['S3_BUCKET_NAME'],
