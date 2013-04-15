@@ -1,4 +1,7 @@
 Eidola::Application.routes.draw do
+  resources :news
+
+
 #  get "admin/index"
 #  get "sessions/new"
 #  get "sessions/create"
@@ -20,6 +23,8 @@ Eidola::Application.routes.draw do
   resources :releases do
     get :autocomplete_artist_name, :on => :collection
   end
+
+  root :to => "news#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -11,7 +11,7 @@
    <% if session[:user_id] %>
      <%= button_to 'Logout', logout_path, method: :delete %>
    <% end %>
- <h1>EIDOLA RECORDS</h1>
+ <h1><%= link_to "EIDOLA RECORDS", root_path %></h1>
  <ul id="navigation">
  <li><%= link_to "ARTISTS", artists_path %></li>
  <li><%= link_to "RELEASES", releases_path %></li>
@@ -20,8 +20,6 @@
  </ul>
  </div>
 <div id="main">
-<div id="sidebar">
-</div>
 <%= yield %>
 </div>
 

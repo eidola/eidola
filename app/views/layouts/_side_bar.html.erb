@@ -1,0 +1,11 @@
+<div class="feature">
+  <p><%= link_to f.title, f %> | 
+    <% f.artists.each do |artist| %>
+    <%= link_to artist.name, artist %> / 
+    <% end %>
+  </p>
+  <div>
+    <img src='<%= f.cover.url(:thumb) %>'/>
+  </div>
+</div>
+ 
