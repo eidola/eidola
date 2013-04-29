@@ -6,9 +6,10 @@
     <% end %>
     <% @artists.each do |artist| %>
     <div class="artist">
-      <div style='background: url(<%= artist.image.url(:thumb) %>) no-repeat;'>
-	<p class="title"><%= artist.name %></p>
-      </div>
+      <%= link_to artist, :title=> artist.name do %>
+      <%= image_tag(artist.image.url(:thumb)) %>
+      <p class="title"><%= artist.name %></p>
+      <% end %>
       <% if session[:user_id] %>
       <ul>
 	<li><%= link_to 'Edit', edit_artist_path(artist) %></li>

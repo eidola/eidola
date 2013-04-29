@@ -9,18 +9,26 @@
 	float: left;
 	margin-left: 20px;
 	margin-top: 20px;
-	div {
-	    width: 200px;
-	    height: 200px;
-	    border: 1px inset #888;
-	    border-radius: 15px;
-	    opacity: 0.9;
-	}
-	.title {
-	    padding: 10%;
-	    font-size: 2em;
-	    margin: auto;
-	    color: #fff;
+	width: 200px;
+	height: 200px;
+	overflow:hidden;
+	a {
+	    img {
+		width: 200px;
+		height: 200px;
+		border: 1px inset #888;
+		border-radius: 15px;
+		opacity: 0.9;
+	    }
+	    
+	    .title {
+		position: absolute;
+		top: 10%;
+		padding: 10%;
+		font-size: 2em;
+		margin: auto;
+		color: #fff;
+	    }
 	}
 	ul {
 	    list-style:none;
