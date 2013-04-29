@@ -14,7 +14,7 @@
 	  <img src='<%= @release.cover.url(:thumb) %>'/>
 	</div>
 	<div class="textwrapper">
-	  <p><%= @release.description =%></p>
+	  <p><%= markdown(@release.description).html_safe =%></p>
 	  <p><%= link_to 'Download', @release.zip.url =%>  
 	<ol>
 	  <% @release.tracks.each do | track | %>

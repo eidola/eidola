@@ -11,7 +11,7 @@
       <div class="description">
 	
 	<div class="textwrapper">
-	  <p><%= @artist.description =%></p>
+	  <p><%= markdown(@artist.description).html_safe %></p>
 	</div>
 	<div class="imgwrapper">
 	  <img src='<%= @artist.image.url(:thumb) %>'/>
