@@ -1,4 +1,0 @@
-<div class="side-bar-item">
-  <h3><%= f.title =%></h3>
-</div>
- 
