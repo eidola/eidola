@@ -26,6 +26,8 @@
     </div>    
     <% end %>
     <br />
-    <%= link_to 'New Release', new_release_path %>
+    <% if session[:user_id] %>
+      <%= link_to 'New Release', new_release_path %>
+    <% end %>
   </div>
 </div>

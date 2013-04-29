@@ -1,3 +1,37 @@
 // Place all the styles related to the News controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#news {
+    width: 90%;
+    margin: 0 auto;
+    .news-item {
+	height: 275px;
+	.title {margin-bottom:15px;}
+	.date {
+	    font-size:0.8em;
+	    float: right;
+	}
+	.description {
+	    height: 200px;
+	    width: 100%;
+	    background: #FFC0CB;
+	    margin-top:2em;
+	    .textwrapper {
+		margin-left:200px;
+		height: 200px;
+		overflow:hidden;
+	    }
+	    .imgwrapper {
+		margin-top:-210px;
+		margin-left:-10px;
+		height:200px;
+		width:200px;
+		overflow:hidden;
+	    }
+	}
+	ul{
+	    list-style:none;
+	    li{float:right; margin-left:10px;}
+	}
+    }
+}

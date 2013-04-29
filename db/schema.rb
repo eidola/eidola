@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415113545) do
+ActiveRecord::Schema.define(:version => 20130426130822) do
 
   create_table "artist_releases", :force => true do |t|
     t.integer  "artist_id"
@@ -24,8 +24,12 @@ ActiveRecord::Schema.define(:version => 20130415113545) do
     t.string   "name"
     t.text     "description"
     t.string   "image_url"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "artists_releases", :id => false, :force => true do |t|
@@ -33,19 +37,16 @@ ActiveRecord::Schema.define(:version => 20130415113545) do
     t.integer "release_id"
   end
 
-  create_table "artistsreleases", :force => true do |t|
-    t.integer  "artist_id"
-    t.integer  "release_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "news", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.date     "date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "releases", :force => true do |t|
