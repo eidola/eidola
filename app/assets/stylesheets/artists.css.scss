@@ -40,3 +40,28 @@
 	}
     }
 }
+#artist {
+    width:90%;
+    margin: 0 auto;
+    .artist {
+	.description {
+	    min-height:200px; 
+	    width:100%;
+	    background:#FFC0CB;
+	    margin-top:2px;
+	    .textwrapper {
+		margin-left: 200px;
+		height:200px;
+		overflow:hidden;
+	    }
+	    .imgwrapper {
+		margin-top:-210px; 
+		margin-left:-10px; 
+		height:200px; 
+		width:200px; 
+		overflow:hidden;
+	    }
+	}
+    }
+
+}
