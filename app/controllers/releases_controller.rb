@@ -94,13 +94,17 @@ class ReleasesController < ApplicationController
         release.tracks.each do |track|
           title = track.file_file_name
           z.put_next_entry(title)
-          z.print IO.read(track.file.path)
+          dest = Tempfile.new(track.file.original_filename)
+          track.file.copy_to_local_file('original', dest.path)
+          z.print IO.read(dest)
         end
         if !release.cover.blank?
           extension = File.extname(release.cover.path).downcase
           cover = "cover#{extension}"
           z.put_next_entry(cover)
-          z.print IO.read(release.cover.path)
+          dest = Tempfile.new(release.cover.original_filename)
+          release.cover.copy_to_local_file('original', dest.path)
+          z.print IO.read(dest)
         end
       end
       stream = File.open(t.path)
@@ -111,5 +115,4 @@ class ReleasesController < ApplicationController
       release.save
     end              
   end
-
 end
