@@ -12,17 +12,20 @@
 	    float: right;
 	}
 	.description {
-	    height: 200px;
+	    position:relative;
+	    min-height: 200px;
 	    width: 100%;
 	    background: #FFC0CB;
 	    margin-top:2em;
 	    .textwrapper {
 		margin-left:200px;
-		height: 200px;
+		min-height: 200px;
+		padding-bottom: 5px;
 		overflow:hidden;
 	    }
 	    .imgwrapper {
-		margin-top:-210px;
+		position: absolute;
+		margin-top:-10px;
 		margin-left:-10px;
 		height:200px;
 		width:200px;

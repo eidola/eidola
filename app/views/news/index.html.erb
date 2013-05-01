@@ -11,10 +11,10 @@
       <div class="title"><%= link_to news.title, news %></div>
       <div class="date"><%= l news.date, :format => "%d %B, %Y" =%></div>
       <div class="description">
-	<div class="textwrapper"><%= markdown(news.content).html_safe %></div>
 	<div class="imgwrapper">
 	  <img src='<%= news.image.url(:thumb) %>'/>
 	</div>
+	<div class="textwrapper"><%= markdown(news.content).html_safe %></div>
       </div>
       <% if session[:user_id] %>
       <ul>
