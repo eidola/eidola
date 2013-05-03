@@ -6,7 +6,8 @@ class Release < ActiveRecord::Base
   attr_accessible :description, :title, :artist_name, :cover, :tracks_attributes, :zip
   has_attached_file :cover, :styles => { :medium => "300x300#", :thumb => "200x200#" }
   has_attached_file :zip
-
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :history]
   def artist_name
     @a = ""
     artists.each do | artist|

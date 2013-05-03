@@ -12,16 +12,3 @@
  *= require_tree .
  */
 
-body{width:960px;margin: 0 auto; }
-h1 {font-size:1.5em;font-weight:normal; font-family: 'Figa', Fallback, sans-serif;}
-h2 {font-size:1;font-weight:normal;}
-p{font-size:0.8em;}
-#header{height:100px; width:100%; margin-top:1em;}
-#navigation > li {list-style-type:none;float: left; margin-right:2em;}
-#sidebar {width: 300px; float:right; border-left: 1px solid #000; height:100%;}
-#content { border-left:1px solid #000; margin-right: 310px;height:100%;}
-/*#content > div {width:90%; margin:0 auto;}*/
-#sidebar > .feature{min-height:180px;width:150px;margin:20px auto;background:#FFC0CB;padding-bottom:5px;}
-#sidebar > .feature > div {height:150px; width:150px; overflow:hidden;margin: 0 auto;}
-#sidebar > .feature > div > img {width:150px;}
-#sidebar > .feature > p {text-transform:uppercase;text-align:center; font-size: 0.7em; font-style:uppercase;}

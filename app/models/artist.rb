@@ -3,4 +3,6 @@ class Artist < ActiveRecord::Base
   has_many :artist_releases
   has_many :releases, :through => :artist_releases
   has_attached_file :image, :styles => { :medium => "300x300#", :thumb => "200x200#" }
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
 end

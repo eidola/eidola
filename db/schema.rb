@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426130822) do
+ActiveRecord::Schema.define(:version => 20130501162506) do
 
   create_table "artist_releases", :force => true do |t|
     t.integer  "artist_id"
@@ -30,12 +30,24 @@ ActiveRecord::Schema.define(:version => 20130426130822) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "slug"
   end
 
   create_table "artists_releases", :id => false, :force => true do |t|
     t.integer "artist_id"
     t.integer "release_id"
   end
+
+  create_table "friendly_id_slugs", :force => true do |t|
+    t.string   "slug",                         :null => false
+    t.integer  "sluggable_id",                 :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
+  add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "news", :force => true do |t|
     t.string   "title"
@@ -63,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20130426130822) do
     t.string   "zip_content_type"
     t.integer  "zip_file_size"
     t.datetime "zip_updated_at"
+    t.string   "slug"
   end
 
   create_table "tracks", :force => true do |t|

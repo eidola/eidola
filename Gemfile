@@ -10,6 +10,8 @@ end
 group :development do
       gem 'sqlite3', '1.3.7'
 end
+gem "friendly_id"
+gem "soundcloud"
 gem "redcarpet"
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
