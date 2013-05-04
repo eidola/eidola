@@ -15,7 +15,7 @@
 	</div>
 	<div class="textwrapper">
 	  <p><%= markdown(@release.description).html_safe =%></p>
-	  <p><%= link_to 'Download', @release.zip.url =%>  
+	  <p><i class="icon-download-alt"></i><%= link_to 'Download', @release.zip.url =%></p>  
 	<ol>
 	  <% @release.tracks.each do | track | %>
 	    <li><%= track.title %></li>

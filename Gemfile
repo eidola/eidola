@@ -10,6 +10,7 @@ end
 group :development do
       gem 'sqlite3', '1.3.7'
 end
+gem "bootstrap-sass"
 gem "friendly_id"
 gem "soundcloud"
 gem "redcarpet"

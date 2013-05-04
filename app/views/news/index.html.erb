@@ -1,35 +1,36 @@
-<div id="sidebar">
-  <% @releases.each do | release | %>
-    <%= render 'layouts/side_bar', :f => release %>
-  <% end %>
-</div>
-<div id="content">
-  <div id="news">
-    <h2>News</h2>
-    <% @news.each do |news| %>
-    <div class="news-item">
-      <div class="title"><%= link_to news.title, news %></div>
-      <div class="date"><%= l news.date, :format => "%d %B, %Y" =%></div>
-      <div class="description">
-	<div class="imgwrapper">
-	  <img src='<%= news.image.url(:thumb) %>'/>
+<div class="row-fluid">
+  <div class="span2">
+  <%= soundcloud('eidolarecordcompany').html_safe %>
+  </div>
+  <div class="span8">
+    <div id="news">
+      <h2>News</h2>
+      <% @news.each do |news| %>
+      <div class="news-item">
+	<div class="title"><%= link_to news.title, news %></div>
+	<div class="date"><%= l news.date, :format => "%d %B, %Y" =%></div>
+	<div class="description">
+	  <div class="imgwrapper">
+	    <img src='<%= news.image.url(:thumb) %>'/>
+	  </div>
+	  <div class="textwrapper"><%= markdown(news.content).html_safe %></div>
 	</div>
-	<div class="textwrapper"><%= markdown(news.content).html_safe %></div>
+	<% if session[:user_id] %>
+	<ul>
+	  <li><%= link_to 'Edit', edit_news_path(news) %></li>
+	  <li><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+	</ul>
+	<% end %>
       </div>
+      <% end %>
       <% if session[:user_id] %>
-      <ul>
-	<li><%= link_to 'Edit', edit_news_path(news) %></li>
-	<li><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-      </ul>
+      <%= link_to 'New News', new_news_path %>
       <% end %>
     </div>
-    <% end %>
-    <% if session[:user_id] %>
-    <%= link_to 'New News', new_news_path %>
+  </div>  
+  <div class="span2">
+    <% @releases.each do | release | %>
+    <%= render 'layouts/side_bar', :f => release %>
     <% end %>
   </div>
-  <div id="soundcloud-player">
-  <%= soundcloud('eidolarecordcompany').html_safe %>
-
-  </div>
-</div>  
+</div>
