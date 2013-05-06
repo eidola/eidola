@@ -1,20 +1,27 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @news.title %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @news.content %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @news.date %>
-</p>
-
-
-<%= link_to 'Edit', edit_news_path(@news) %> |
-<%= link_to 'Back', news_index_path %>
+  <div class="row-fluid">   
+    <div class="span10">
+      <div id="news">
+	<div class="news-item">
+	  <div>
+	    <div class="title"><%= @news.title %></div>
+	    <div class="date"><%= l @news.date, :format => "%d %B, %Y" =%></div>
+	  </div>
+	  <div class="description">
+	    <div class="imgwrapper">
+	      <img src='<%= @news.image.url(:thumb) %>'/>
+	    </div>
+	    <div class="textwrapper"><%= markdown(@news.content).html_safe %></div>
+	  </div>
+	  <% if session[:user_id] %>
+	  <ul>
+	    <li><%= link_to 'Edit', edit_news_path(@news) %></li>
+	    <li><%= link_to 'Destroy', @news, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+	  </ul>
+	  <% end %>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'layouts/footer' %>

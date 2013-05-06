@@ -1,8 +1,5 @@
 <p id="notice"><%= notice %></p>
 <div class="row-fluid">
-  <div class="span2">
-    <%= soundcloud('seanking').html_safe %>
-  </div>
   <div class="span8">
   <div id="artist">
     <h2><%= @artist.name %></h2>
@@ -19,6 +16,7 @@
     </div>
     <% if session[:user_id] %>
     <%= link_to 'Edit', edit_artist_path(@artist) %> |
+    <%= link_to 'Delete', @artist, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     <%= link_to 'Back', artists_path %>
   </div>
@@ -29,3 +27,4 @@
     <% end %>
   </div>
 </div>
+<%= render :partial => 'layouts/footer', :locals => { :soundcloudid => @artist.soundcloudid } %>

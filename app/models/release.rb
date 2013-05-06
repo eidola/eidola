@@ -4,6 +4,7 @@ class Release < ActiveRecord::Base
   has_many :tracks, :dependent => :destroy
   accepts_nested_attributes_for :tracks, :reject_if => lambda { |a| a[:title].blank? }, :allow_destroy => true
   attr_accessible :description, :title, :artist_name, :cover, :tracks_attributes, :zip
+  validates :title, :description, :artist_name, presence: true
   has_attached_file :cover, :styles => { :medium => "300x300#", :thumb => "200x200#" }
   has_attached_file :zip
   extend FriendlyId
@@ -11,7 +12,8 @@ class Release < ActiveRecord::Base
   def artist_name
     @a = ""
     artists.each do | artist|
-       @a << artist.name << ", "
+      if @a = '' then @a << "," end
+      @a << artist.name
     end
     @a
   end

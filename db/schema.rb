@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130501162506) do
+ActiveRecord::Schema.define(:version => 20130506165621) do
 
   create_table "artist_releases", :force => true do |t|
     t.integer  "artist_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20130501162506) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "slug"
+    t.string   "soundcloudid"
   end
 
   create_table "artists_releases", :id => false, :force => true do |t|
