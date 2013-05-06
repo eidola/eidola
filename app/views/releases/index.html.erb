@@ -10,7 +10,7 @@
 	    <% end %>
       </div>
       <div class="description">
-	<div class="textwrapper"><p><%= release.description %></p>
+	<div class="textwrapper"><p><%= markdown(release.description).html_safe %></p>
 	</div>	
 	<div class="imgwrapper">
 	  <img src='<%= release.cover.url(:thumb) %>'/>
@@ -26,6 +26,8 @@
     </div>    
     <% end %>
     <br />
-    <%= link_to 'New Release', new_release_path %>
+    <% if session[:user_id] %>
+      <%= link_to 'New Release', new_release_path %>
+    <% end %>
   </div>
 </div>

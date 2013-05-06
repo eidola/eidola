@@ -7,20 +7,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
- <div id="header">
-   <% if session[:user_id] %>
-     <%= button_to 'Logout', logout_path, method: :delete %>
-   <% end %>
- <h1><%= link_to "EIDOLA RECORDS", root_path %></h1>
- <ul id="navigation">
- <li><%= link_to "ARTISTS", artists_path %></li>
- <li><%= link_to "RELEASES", releases_path %></li>
- <li>GIGS</li>
- <li>MERCHANDISE</li>
- </ul>
- </div>
-<div id="main">
-<%= yield %>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+	<%= link_to "EIDOLA RECORDS", root_path, :class => "brand" %>
+	<div class="nav-collapse collapse">
+	  <ul class="nav">
+	    <li><%= link_to "ARTISTS", artists_path %></li>
+	    <li><%= link_to "RELEASES", releases_path %></li>
+	    <li><a href="#">GIGS</a></li>
+	    <li><a href="#">MERCHANDISE</a></li>
+	    <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">MORE <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="nav-header">External</li>
+                  <li><a href="#">Github</a></li>
+                  <li><a href="#">Soundcloud</a></li>
+                </ul>
+              </li>
+	    </ul>
+	    
+	</div>
+	<div class="pull-right">
+	  <% if session[:user_id] %>
+	  <%= button_to 'Logout', logout_path, method: :delete, :class =>"navbar-btn" %>
+	  <% else %>
+	  <%= render 'sessions/new' %>
+	  <% end %>
+	</div>
+      </div>
+    </div>
+  </div>
+<div id="main" class="container-fluid">
+  <%= yield %>
 </div>
 
 </body>

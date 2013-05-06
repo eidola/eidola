@@ -1,3 +1,0 @@
-class Track < ActiveRecord::Base
-  attr_accessible :number, :release_id, :title
-end

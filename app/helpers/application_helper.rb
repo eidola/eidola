@@ -10,4 +10,14 @@ module ApplicationHelper
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
+  def markdown(text)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+    return markdown.render(text)
+  end
+  def soundcloud(username)
+    sc = Soundcloud.new(:client_id => "27bbad2a1812c45ba7e8e3a4a8bc1715")
+    url = "https://soundcloud.com/#{username}"
+    tracks = sc.get('/oembed', :url => url, :show_comments => "false" )
+    return tracks['html']
+  end
 end

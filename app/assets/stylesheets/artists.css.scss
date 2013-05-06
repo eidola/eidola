@@ -1,3 +1,67 @@
 // Place all the styles related to the Artists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#artists {
+    width:90%;
+    margin: 0 auto;
+    .artist {
+	position:relative;
+	float: left;
+	margin-left: 20px;
+	margin-top: 20px;
+	width: 200px;
+	height: 200px;
+	overflow:hidden;
+	a {
+	    img {
+		width: 200px;
+		height: 200px;
+		border: 1px inset #888;
+		border-radius: 15px;
+		opacity: 0.9;
+	    }
+	    
+	    .title {
+		position: absolute;
+		top: 10%;
+		padding: 10%;
+		font-size: 2em;
+		margin: auto;
+		color: #fff;
+	    }
+	}
+	ul {
+	    list-style:none;
+	    li {
+		float:right;
+		margin-right: 10px;
+		font-size: 0.8em;
+	    }
+	}
+    }
+}
+#artist {
+    width:90%;
+    margin: 0 auto;
+    .artist {
+	.description {
+	    min-height:200px; 
+	    width:100%;
+	    background:#FFC0CB;
+	    margin-top:2px;
+	    .textwrapper {
+		margin-left: 200px;
+		height:200px;
+		overflow:hidden;
+	    }
+	    .imgwrapper {
+		margin-top:-210px; 
+		margin-left:-10px; 
+		height:200px; 
+		width:200px; 
+		overflow:hidden;
+	    }
+	}
+    }
+
+}

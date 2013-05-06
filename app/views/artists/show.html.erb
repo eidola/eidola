@@ -1,20 +1,31 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @artist.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @artist.description %>
-</p>
-
-<p>
-  <b>Image url:</b>
-  <%= @artist.image_url %>
-</p>
-
-
-<%= link_to 'Edit', edit_artist_path(@artist) %> |
-<%= link_to 'Back', artists_path %>
+<div class="row-fluid">
+  <div class="span2">
+    <%= soundcloud('seanking').html_safe %>
+  </div>
+  <div class="span8">
+  <div id="artist">
+    <h2><%= @artist.name %></h2>
+    <div class="artist">
+      <div class="description">
+	
+	<div class="textwrapper">
+	  <p><%= markdown(@artist.description).html_safe %></p>
+	</div>
+	<div class="imgwrapper">
+	  <img src='<%= @artist.image.url(:thumb) %>'/>
+	</div>
+      </div>
+    </div>
+    <% if session[:user_id] %>
+    <%= link_to 'Edit', edit_artist_path(@artist) %> |
+    <% end %>
+    <%= link_to 'Back', artists_path %>
+  </div>
+  </div>
+  <div class="span2">
+    <% @releases.each do | release | %>
+    <%= render 'layouts/side_bar', :f => release %>
+    <% end %>
+  </div>
+</div>
