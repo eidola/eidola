@@ -1,0 +1,95 @@
+@import "bootstrap";
+body,html{height:100%;}
+body {
+    
+    #wrap {
+	min-height:100%;
+	height:auto !important;
+	margin: 0 auto -40px;
+	.push{ height: 40px; }
+    }
+    #footer{
+	height:40px;
+    }
+    /*a,a:link,a:visited,a:hover {
+	padding: 2px;
+	text-decoration:none;
+	color: #fff;
+    }
+    a:hover { 
+	background: #FFF; 
+	color: #FFC0CB;
+    }*/
+    h1 {
+	font-size:1.5em;
+	font-weight:normal;
+	
+    }
+    h2 {
+	font-size:1;
+	font-weight:normal;
+    }
+    p {
+	font-size:0.8em;
+    }
+    #header {
+	height:200px;
+	width:100%;
+	background: url(/retro5.jpg) no-repeat;
+	overflow:hidden;
+	.inner {
+	    width: 90%;
+	    margin:0 auto;
+	    #navigation {
+		li {
+		    list-style-type:none;
+		    float: left;
+		    margin-right:2em;
+		    color: #fff;
+		}
+
+	    }
+	}
+    }
+    #main {
+	padding-top:40px;
+	
+
+	a,a:link,a:visited {color:#000;}
+	div {
+	div {
+	    //width: 300px;
+	    //float:right;
+	    //border-left: 1px solid #000;
+	    //height:100%;
+	    .feature {
+		min-height:180px;
+		width:150px;
+		margin:20px auto;
+		background:#FFC0CB;
+		padding-bottom:5px;
+		div {
+		    height:150px;
+		    width:150px;
+		    overflow:hidden;
+		    margin: 0 auto;
+		    img {
+			width:150px;
+		    }
+		    p {
+			text-transform:uppercase;
+			text-align:center;
+			font-size: 0.7em;
+			font-style:uppercase;
+		    }
+		}
+	    }
+	}}
+    }/*
+	#content { 
+	    border-left:1px solid #000;
+	    margin-right: 310px;
+	    height:100%;
+	}
+    }*/
+}

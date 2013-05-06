@@ -1,0 +1,5 @@
+<%=form_tag({ :action=>"create", :controller=>"sessions"},{:class=>"navbar-form"}) do %>
+<%= text_field_tag :email, params[:email], :class=>"span2", :placeholder => :email %>
+<%= password_field_tag :password, params[:password], :class=>"span2", :placeholder => :password %>
+<%= submit_tag "Login", :class => "btn" %>
+<% end %>
