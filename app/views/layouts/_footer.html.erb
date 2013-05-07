@@ -6,7 +6,8 @@
 	<ul class="nav dropup">
 	  <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">Soundcloud Player <b class="caret"></b></a>
           <ul class="dropdown-menu" style="width:400px;">
-	    <% soundcloudid = 'eidolarecordcompany' if local_assigns[:soundcloudid].nil? || local_assigns[:soundcloudid] = '' %>
+	    <% soundcloudid = 'eidolarecordcompany' if local_assigns[:soundcloudid] == "" || local_assigns[:soundcloudid].nil? %>
+	    <% logger.info 'Soundcloud ID: ' << soundcloudid %>
 	    <%= soundcloud(soundcloudid).html_safe %>
 	  </ul>  
 	</ul>
