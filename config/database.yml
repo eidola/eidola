@@ -28,7 +28,7 @@ test:
   host: localhost
 
 production:
-  adapter: mysql2
+  adapter: pg
   encoding: utf8
   reconnect: false
   database: eidola_production
