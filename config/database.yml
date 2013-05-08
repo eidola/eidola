@@ -33,6 +33,6 @@ production:
   reconnect: false
   database: eidola_production
   pool: 5
-  username: root
+  username: nginx
   password:
   host: localhost
