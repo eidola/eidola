@@ -28,10 +28,10 @@ test:
   host: localhost
 
 production:
-  adapter: pg
+  adapter: postgresql
   encoding: utf8
   reconnect: false
-  database: eidola_production
+  database: db/eidola_production
   pool: 5
   username: eidola
   password:
