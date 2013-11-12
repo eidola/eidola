@@ -1,46 +1,54 @@
 // Place all the styles related to the News controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#news {
-    width: 90%;
+
+#news{
+    width: 100%;
+}
+#news > .news {
+    
+}
+#news > .news > .cover {
+    position:relative;
+    float: left;
+    width:295px;
+    height:300px;
+    overflow:hidden;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin-right: 15px;
+    background-color: #a40000;
+}
+.news-img {
+    display:block;
+    min-height: 300px;
+    min-width: 295px;
+    height: auto;
+    width: auto;
+    margin:auto;
+}
+#news > .news > .cover > h1 {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    position: absolute;
+    bottom:0;
+    left:0;
     margin: 0 auto;
-    .news-item {
-	min-height: 275px;
-	div{
-	    min-height: 15px;
-	    .title {
-		float:left;
-		margin-right: 20px;
-	    }
-	    .date {
-		font-size:0.8em;
-		float: right;
-	    }
-	}
-	.description {
-	    position:relative;
-	    min-height: 200px;
-	    width: 100%;
-	    background: #FFC0CB;
-	    margin-top:2em;
-	    .textwrapper {
-		margin-left:200px;
-		min-height: 200px;
-		padding-bottom: 5px;
-		overflow:hidden;
-	    }
-	    .imgwrapper {
-		position: absolute;
-		margin-top:-10px;
-		margin-left:-10px;
-		height:200px;
-		width:200px;
-		overflow:hidden;
-	    }
-	}
-	ul{
-	    list-style:none;
-	    li{float:right; margin-left:10px;}
-	}
-    }
+    padding: 0 10px;
+}
+#news > .news > .cover > h1:hover{
+    background-color: rgba(164,0,0,0.5);
+}
+#news > .news > .detail {
+    margin-right: 300px;
+}
+#sidebar > #news > .news > .cover{
+    width: 150px;
+    height: 150px;
+}
+#sidebar > #news > .news > .cover > .news-img {
+    max-height: 150px;
+    max-width: 150;
+    height: auto;
+    width: auto;
 }

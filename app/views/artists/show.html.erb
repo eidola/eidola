@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-<div class="row-fluid">
-  <div class="span8">
+
+  
   <div id="artist">
-    <h2><%= @artist.name %></h2>
+    <h1><%= @artist.name %></h1>
     <div class="artist">
       <div class="description">
 	
@@ -21,10 +21,9 @@
     <%= link_to 'Back', artists_path %>
   </div>
   </div>
-  <div class="span2">
+  <div class="releases">
     <% @releases.each do | release | %>
     <%= render 'layouts/side_bar', :f => release %>
     <% end %>
   </div>
-</div>
-<%= render :partial => 'layouts/footer', :locals => { :soundcloudid => @artist.soundcloudid } %>
+

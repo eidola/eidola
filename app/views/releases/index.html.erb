@@ -1,20 +1,18 @@
-<div id="content">
+  <h1>RELEASES</h1>
   <div id="releases">
-    <h2>RELEASES</h2>
     <% @releases.each do |release| %>
     <div class="release">
-      <div class="title">
-	<%= link_to release.title, release %> |  
-	    <% release.artists.each do |artist| %>
-	    <%= link_to artist.name, artist %> / 
-	    <% end %>
+      <div class="cover">
+	<h1>
+	  <%= link_to release.title, release %>  
+	</h1>
+	<img src='<%= release.cover.url(:thumb) %>'/>
       </div>
-      <div class="description">
-	<div class="textwrapper"><p><%= markdown(release.description).html_safe %></p>
-	</div>	
-	<div class="imgwrapper">
-	  <img src='<%= release.cover.url(:thumb) %>'/>
-	</div>
+      <div class="details">
+	<% release.artists.each do |artist| %>
+	  <p><%= link_to artist.name, artist, :class => 'artist-link' %></p>
+	<% end %>
+	<p><%= markdown(release.description).html_safe %></p>
       </div>
       <ul>
 	<% if session[:user_id] %>
@@ -30,5 +28,5 @@
       <%= link_to 'New Release', new_release_path %>
     <% end %>
   </div>
-</div>
-<%= render 'layouts/footer' %>
+
+

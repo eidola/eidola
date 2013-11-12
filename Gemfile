@@ -18,7 +18,7 @@ gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 gem "bcrypt-ruby"
 gem 'rubyzip', :require => 'zip/zip'
-gem 'rmagick'
+gem 'rmagick', '2.13.2', :git=>'http://github.com/rmagick/rmagick.git'
 gem 'rails-i18n'
 gem 'random_record'
 # Gems used only for assets and not required

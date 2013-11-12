@@ -7,43 +7,25 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-      <div class="navbar navbar-inverse navbar-fixed-top">
-	<div class="navbar-inner">
-	  <!--<div class="container">-->
-	  <%= link_to "EIDOLA RECORDS", root_path, :class => "brand" %>
-	  <div class="nav-collapse collapse">
-	    <ul class="nav">
-	      <li><%= link_to "ARTISTS", artists_path %></li>
-	      <li><%= link_to "RELEASES", releases_path %></li>
-	      <li><a href="#">GIGS</a></li>
-	      <li><a href="#">MERCHANDISE</a></li>
-	      <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">MORE <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-header">External</li>
-                  <li><a href="https://github.com/eidola/eidola">Github</a></li>
-                  <li><a href="https://soundcloud.com/eidolarecordcompany">Soundcloud</a></li>
-                </ul>
-              </li>
-	    </ul>
-
-	  </div>
-	  <div class="pull-right">
-	    <% if session[:user_id] %>
-	    <%= button_to 'Logout', logout_path, method: :delete, :class =>"navbar-btn" %>
-	    <% else %>
-	    <%= render 'sessions/new' %>
-	    <% end %>
-	  </div>	    
-	  <!--</div>--><!-- container-->
-	</div><!--navbar-inner-->
-      </div><!--navbar-->
-      <div id="wrap">
-	<div id="main" class="container">
+    <header>
+      <%= image_tag "logo_recordplayer.png", :class => "logo" %>
+      <h1><%= link_to "EIDOLA RECORDS", root_path, :class => "white" %></h1>
+      <ul class="nav">
+	<li><%= link_to "ARTISTS", artists_path %></li>
+	<li><%= link_to "RELEASES", releases_path %></li>
+      </ul>
+      <div class="pull-right">
+	<% if session[:user_id] %>
+	<%= button_to 'Logout', logout_path, method: :delete, :class =>"navbar-btn" %>
+	<% else %>
+	<%= render 'sessions/new' %>
+	<% end %>
+    </div>
+    </header>
+    	    
+    <div id="main" >
       <%= yield %>
-      </div>
-      <div class="push"></div>
-    </div><!--wrap-->
+    </div>
     <%= yield :footer %>
   </body>
 </html>

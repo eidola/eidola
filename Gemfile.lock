@@ -1,3 +1,9 @@
+GIT
+  remote: http://github.com/rmagick/rmagick.git
+  revision: 79e1708c7f6792a3a90cb8cb3ffaeb74c58e092e
+  specs:
+    rmagick (2.13.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -115,7 +121,6 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (2.2.2)
-    rmagick (2.13.2)
     rubyzip (0.9.9)
     sass (3.2.7)
     sass-rails (3.2.6)
@@ -160,7 +165,7 @@ DEPENDENCIES
   rails3-jquery-autocomplete
   random_record
   redcarpet
-  rmagick
+  rmagick (= 2.13.2)!
   rubyzip
   sass-rails (~> 3.2.3)
   soundcloud

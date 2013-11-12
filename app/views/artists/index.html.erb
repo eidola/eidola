@@ -1,14 +1,13 @@
-<div class="row-fluid">
-  <div id="artists">
-    <h2>ARTISTS</h2>
-    <% if session[:user_id] %>
-      <div><%= link_to 'New Artist', new_artist_path %></div>
-    <% end %>
-    <% @artists.each do |artist| %>
-    <div class="artist">
-      <%= link_to artist, :title=> artist.name do %>
+<h1>ARTISTS</h1>
+<div id="artists">
+  <% if session[:user_id] %>
+    <div><%= link_to 'New Artist', new_artist_path %></div>
+  <% end %>
+  <% @artists.each do |artist| %>
+  <div class="artist">
+      <%= link_to artist, :title=> artist.name, :class => 'white' do %>
       <%= image_tag(artist.image.url(:thumb)) %>
-      <p class="title"><%= artist.name %></p>
+      <h1><%= artist.name %></h1>
       <% end %>
       <% if session[:user_id] %>
       <ul>
@@ -20,5 +19,5 @@
 <% end %>
 <br />
 </div>
-</div>
-<%= render 'layouts/footer' %>
+
+
