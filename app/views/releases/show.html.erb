@@ -1,34 +1,30 @@
 <p id="notice"><%= notice %></p>
 <div id="content">
   <div id="release">
-    <h2><%= @release.title %></h2>
-    <div class="release">
-      <div class="title">
-	<% @release.artists.each do |artist| %>
-	  <%= link_to artist.name, artist %> / 
-	<% end %>
-      </div>
-      <div class="description">
-	<div class="imgwrapper">
-	  <img src='<%= @release.cover.url(:thumb) %>'/>
-	</div>
-	<div class="textwrapper">
-	  <p><%= markdown(@release.description).html_safe =%></p>
-	  <% if @release.zip.content_type == 'application/zip' %>
-	  <p><i class="icon-download-alt"></i><%= link_to 'Download', @release.zip.url =%></p>  
-	  <% end %>
-	<ol>
-	  <% @release.tracks.each do | track | %>
-	    <li><%= track.title %></li>
-	  <% end %>
-	</ul>  
-	</div>
-      </div>
+    <div class="title">
+    <h1><%= @release.title %></h1>
+    <ul>
+      <% @release.artists.each do |artist| %>
+      <li><%= link_to artist.name, artist, :class => 'white' %></li>
+      <% end %>
+    </ul>
     </div>
-<% if session[:user_id] %>
-  <%= link_to 'Edit', edit_release_path(@release) %> |
-<% end %>
-<%= link_to 'Back', releases_path %>
+    <img src='<%= @release.cover.url(:thumb) %>'/>
+    <p><%= markdown(@release.description).html_safe =%></p>
+    <% if @release.zip.content_type == 'application/zip' %>
+    <p><i class="icon-download-alt"></i><%= link_to 'Download', @release.zip.url =%></p>  
+    <% end %>
+    <ol>
+      <% @release.tracks.each do | track | %>
+      <li><%= track.title %></li>
+      <% end %>
+    </ol>  
   </div>
 </div>
-<%= render 'layouts/footer' %>
+
+<% if session[:user_id] %>
+  <%= link_to 'Edit', edit_release_path(@release), :class => 'btn' %> |
+<% end %>
+<%= link_to 'Back', releases_path, :class => 'btn' %>
+
+

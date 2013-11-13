@@ -1,27 +1,20 @@
 <p id="notice"><%= notice %></p>
-  <div class="row-fluid">   
-    <div class="span10">
-      <div id="news">
-	<div class="news-item">
-	  <div>
-	    <div class="title"><%= @news.title %></div>
-	    <div class="date"><%= l @news.date, :format => "%d %B, %Y" =%></div>
-	  </div>
-	  <div class="description">
-	    <div class="imgwrapper">
-	      <img src='<%= @news.image.url(:thumb) %>'/>
-	    </div>
-	    <div class="textwrapper"><%= markdown(@news.content).html_safe %></div>
-	  </div>
-	  <% if session[:user_id] %>
-	  <ul>
-	    <li><%= link_to 'Edit', edit_news_path(@news) %></li>
-	    <li><%= link_to 'Destroy', @news, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-	  </ul>
-	  <% end %>
-	</div>
-      </div>
+<div id="news">
+  <div class="news-item">
+    <h1><%= @news.title %></h1>    
+    <div class="date"><%= l @news.date, :format => "%d %B, %Y" =%></div>
+    <div class="news-item-title">
+      <%= image_tag(@news.image.url(:thumb)) %>
     </div>
+    <div class="summary"><%= markdown(@news.content).html_safe %></div>
+
+    <% if session[:user_id] %>
+    <ul>
+      <li><%= link_to 'Edit', edit_news_path(@news) %></li>
+      <li><%= link_to 'Destroy', @news, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
+    <% end %>
   </div>
 </div>
-<%= render 'layouts/footer' %>
+</div>
+

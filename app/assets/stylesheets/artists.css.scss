@@ -36,3 +36,45 @@
 	
     }
 }
+#artist {
+    margin-right: 250px;
+    img {
+	margin-left: 5px;
+	float: right;
+	width: 200px;
+	height: 200px;
+	border-radius: 5px;
+	border: 1px solid #fff;
+    }
+}
+.releases{
+    position:relative;
+    width: 250px;
+    float: right;
+    margin-top: 90px;
+    h1.rotate {
+	position:absolute;
+	top: 0px;
+	left: -70px;
+	line-height: 0.5;
+	float: left;
+	-webkit-transform: rotate(270deg);
+	-webkit-transform-origin: right top;
+	-moz-transform: rotate(270deg);
+	-moz-transform-origin: left  top;
+	-ms-transform: rotate(270deg);
+	-ms-transform-origin: left top;
+	-o-transform: rotate(270deg);
+	-o-transform-origin: left top;
+	transform: rotate(270deg);
+	transform-origin: right top;
+	/* Should be unset in IE9+ I think. */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    }
+    .feature {
+	margin-left: 110px;
+	margin-top:15px;
+	
+    }
+
+}

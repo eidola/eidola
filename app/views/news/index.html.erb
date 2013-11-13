@@ -2,16 +2,15 @@
 <div id="news">
   <% @news.each do |news| %>
   <div class="news-item">
-    <div>
-      <div class="title"><%= link_to news.title, news %></div>
-      <div class="date"><%= l news.date, :format => "%d %B, %Y" =%></div>
+    <div class="date"><%= l news.date, :format => "%d %B, %Y" =%></div>
+    <div class="news-item-title">
+      <%= link_to news, :title=> news.title, :class => 'white' do %>
+      <%= image_tag(news.image.url(:thumb)) %>
+      <h1><%= news.title %></h1>
+      <% end %>
     </div>
-    <div class="description">
-      <div class="imgwrapper">
-	<img src='<%= news.image.url(:thumb) %>'/>
-      </div>
-      <div class="textwrapper"><%= markdown(news.content).html_safe %></div>
-    </div>
+    <div class="summary"><%= markdown(news.content).html_safe %></div>
+    
     <% if session[:user_id] %>
     <ul>
       <li><%= link_to 'Edit', edit_news_path(news) %></li>
@@ -24,11 +23,6 @@
   <%= link_to 'New News', new_news_path %>
   <% end %>
 </div>
-</div>  
-<div class="span2">
-  <% @releases.each do | release | %>
-  <%= render 'layouts/side_bar', :f => release %>
-  <% end %>
-  
+
 
 

@@ -1,29 +1,19 @@
 <p id="notice"><%= notice %></p>
+<div class="releases">
+  <% @releases.each do | release | %>
+  <%= render 'layouts/side_bar', :f => release %>
+  <% end %>
+  <h1 class="rotate">RELEASES</h1>
+</div>
 
-  
-  <div id="artist">
-    <h1><%= @artist.name %></h1>
-    <div class="artist">
-      <div class="description">
-	
-	<div class="textwrapper">
-	  <p><%= markdown(@artist.description).html_safe %></p>
-	</div>
-	<div class="imgwrapper">
-	  <img src='<%= @artist.image.url(:thumb) %>'/>
-	</div>
-      </div>
-    </div>
-    <% if session[:user_id] %>
-    <%= link_to 'Edit', edit_artist_path(@artist) %> |
-    <%= link_to 'Delete', @artist, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-    <%= link_to 'Back', artists_path %>
-  </div>
-  </div>
-  <div class="releases">
-    <% @releases.each do | release | %>
-    <%= render 'layouts/side_bar', :f => release %>
-    <% end %>
-  </div>
+<div id="artist">
+  <h1><%= @artist.name %></h1>
+  <%= image_tag(@artist.image.url(:thumb)) %>
+  <p><%= markdown(@artist.description).html_safe %></p>
+  <% if session[:user_id] %>
+  <%= link_to 'Edit', edit_artist_path(@artist) %> |
+  <%= link_to 'Delete', @artist, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <%= link_to 'Back', artists_path, :class => 'btn' %>
+</div>
 

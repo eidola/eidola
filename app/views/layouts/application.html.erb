@@ -10,17 +10,12 @@
     <header>
       <%= image_tag "logo_recordplayer.png", :class => "logo" %>
       <h1><%= link_to "EIDOLA RECORDS", root_path, :class => "white" %></h1>
+
       <ul class="nav">
 	<li><%= link_to "ARTISTS", artists_path %></li>
 	<li><%= link_to "RELEASES", releases_path %></li>
       </ul>
-      <div class="pull-right">
-	<% if session[:user_id] %>
-	<%= button_to 'Logout', logout_path, method: :delete, :class =>"navbar-btn" %>
-	<% else %>
-	<%= render 'sessions/new' %>
-	<% end %>
-    </div>
+
     </header>
     	    
     <div id="main" >

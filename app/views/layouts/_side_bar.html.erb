@@ -1,11 +1,9 @@
 <div class="feature">
-  <div>
-    <img src='<%= f.cover.url(:thumb) %>'/>
-  </div>
-  <p><%= link_to f.title, f %> | 
-    <% f.artists.each do |artist| %>
-    <%= link_to artist.name, artist %> / 
+  <div class="item">
+    <%= link_to f, :title=> f.title, :class => 'white' do %>
+    <h1><%= f.title %></h1>
+    <%= image_tag(f.cover.url(:thumb)) %>
     <% end %>
-  </p>
+  </div>
 </div>
  
