@@ -2,29 +2,49 @@
 <div id="content">
   <div id="release">
     <div class="title">
-    <h1><%= @release.title %></h1>
-    <ul>
-      <% @release.artists.each do |artist| %>
-      <li><%= link_to artist.name, artist, :class => 'white' %></li>
-      <% end %>
-    </ul>
+      <h1><%= @release.title %></h1>
+	  
+      
     </div>
-    <img src='<%= @release.cover.url(:thumb) %>'/>
-    <p><%= markdown(@release.description).html_safe =%></p>
-    <% if @release.zip.content_type == 'application/zip' %>
-    <p><i class="icon-download-alt"></i><%= link_to 'Download', @release.zip.url =%></p>  
+    <div class="row">
+      <ul class="artists">
+	<% @release.artists.each do |artist| %>
+	<li><%= link_to artist.name, artist, :class => 'white' %></li>
+	<% end %>
+	<li>
+	  <% if @release.zip.content_type == 'application/zip' %>
+	  <%= link_to 'Download', @release.zip.url, :class => 'btn' %>
+	  <% end %>
+	</li>
+      </ul>
+      <img src='<%= @release.cover.url(:thumb) %>'/>    
+      <table class="tracks">
+	<thead>
+	  <tr>
+	    <td>#</td>
+	    <td>Title</td>
+	    <td>Stream</td>
+	  </tr>
+	</thead>
+	<tbody>
+	  <% @release.tracks.each do | track | %>
+	  <tr>
+	    <td><%= track.number %></td>
+	    <td><%= track.title %></td>
+	    <td><audio src="<%= track.file.url %>" controls></audio></td>
+	    <% end %>
+	</tbody>
+      </table>  
+
+    </div>
+    <div class="description"><%= markdown(@release.description).html_safe %></div>
+    
+  </div>
+  <div class="btn-ctrls">
+    <% if session[:user_id] %>
+    <%= link_to 'Edit', edit_release_path(@release), :class => 'btn' %> |
     <% end %>
-    <ol>
-      <% @release.tracks.each do | track | %>
-      <li><%= track.title %></li>
-      <% end %>
-    </ol>  
+    <%= link_to 'Back', releases_path, :class => 'btn' %>
   </div>
 </div>
-
-<% if session[:user_id] %>
-  <%= link_to 'Edit', edit_release_path(@release), :class => 'btn' %> |
-<% end %>
-<%= link_to 'Back', releases_path, :class => 'btn' %>
-
 

@@ -16,7 +16,7 @@ class Release < ActiveRecord::Base
   def artist_name
     @a = ""
     artists.each do | artist|
-      if @a == '' then @a << "," end
+      if @a != '' then @a << "," end
       @a << artist.name
     end
     @a
