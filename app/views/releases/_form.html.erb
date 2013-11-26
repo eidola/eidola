@@ -1,4 +1,4 @@
-<%= form_for(@release) do |f| %>
+<%= form_for @release, :html => { :multipart => true, :role => 'form' } do |f| %>
   <% if @release.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@release.errors.count, "error") %> prohibited this release from being saved:</h2>
@@ -11,30 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :artist_name %><br />
-    <%= f.autocomplete_field :artist_name, autocomplete_artist_name_releases_path, 'data-delimiter' => ',', :multiple => true %>
+    <%= f.autocomplete_field :artist_name, autocomplete_artist_name_releases_path, 'data-delimiter' => ',', :multiple => true, :class => "form-control" %>
     <div id="store"></div>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :class => "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.fields_for :tracks do |t| %>
       <%= render 'track_fields', :f => t %>
     <% end %>
     <%= link_to_add_fields "Add Track", f, :tracks %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :cover %>
-    <%= f.file_field :cover %>
+    <%= image_tag(@release.cover.url(:thumb)) %>
+    <%= f.file_field :cover, :class => "form-control" %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+

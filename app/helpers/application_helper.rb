@@ -20,4 +20,7 @@ module ApplicationHelper
     tracks = sc.get('/oembed', :url => url, :show_comments => "false" )
     return tracks['html']
   end
+  def title(page_title)
+    content_for :title, page_title.to_s.upcase
+  end
 end

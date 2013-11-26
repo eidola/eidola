@@ -3,7 +3,7 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.json
   def index
-    @news = News.all
+    @news = News.paginate(:page => params[:page], :per_page => 5).order('date DESC')
     @releases = Release.random(3)
     respond_to do |format|
       format.html # index.html.erb

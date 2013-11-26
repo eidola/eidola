@@ -1,9 +1,9 @@
-<div class="track">
+<div class="track form-group">
   <%= f.label :title %><br />
-  <%= f.text_field :title %><br />
+  <%= f.text_field :title , :class => "form-control" %><br />
   <%= f.label :number %><br />
-  <%= f.text_field :number %><br />
+  <%= f.text_field :number, :class => "form-control" %><br />
   <%= f.label :file %><br />
-  <%= f.file_field :file %>
+  <%= f.file_field :file, :class => "form-control" %>
   <%= link_to_remove_fields "remove", f %>
 </div>

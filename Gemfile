@@ -10,7 +10,7 @@ end
 group :development do
       gem 'sqlite3', '1.3.7'
 end
-gem "bootstrap-sass"
+gem "bootstrap-sass", github: 'thomas-mcdonald/bootstrap-sass'
 gem "friendly_id"
 gem "soundcloud"
 gem "redcarpet"
@@ -21,6 +21,9 @@ gem 'rubyzip', :require => 'zip/zip'
 gem 'rmagick', '2.13.2', :git=>'http://github.com/rmagick/rmagick.git'
 gem 'rails-i18n'
 gem 'random_record'
+gem 'will_paginate', '~> 3.0'
+gem 'jquery-fileupload-rails'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

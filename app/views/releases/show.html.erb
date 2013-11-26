@@ -1,3 +1,4 @@
+<% title @release.title %>
 <p id="notice"><%= notice %></p>
 <div id="content">
   <div id="release">
@@ -17,7 +18,7 @@
 	  <% end %>
 	</li>
       </ul>
-      <img src='<%= @release.cover.url(:thumb) %>'/>    
+      <%= image_tag(@release.cover.url(:thumb)) %>
       <table class="tracks">
 	<thead>
 	  <tr>
@@ -31,7 +32,12 @@
 	  <tr>
 	    <td><%= track.number %></td>
 	    <td><%= track.title %></td>
-	    <td><audio src="<%= track.file.url %>" controls></audio></td>
+	    <td>
+	      <audio controls>
+		<source src="<%= track.file.url(:mp3) %>" type="audio/mp3">
+		<source src="<%= track.file.url(:ogg) %>" type="audio/ogg">
+	      </audio>
+	    </td>
 	    <% end %>
 	</tbody>
       </table>  

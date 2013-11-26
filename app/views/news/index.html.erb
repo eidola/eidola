@@ -1,3 +1,4 @@
+<% title "NEWS" %>
 <h1>News</h1>  
 <div id="news">
   <% @news.each do |news| %>
@@ -9,8 +10,9 @@
       <h1><%= news.title %></h1>
       <% end %>
     </div>
-    <div class="summary"><%= markdown(news.content).html_safe %></div>
-    
+    <div class="summary">
+      <%= markdown(news.content).html_safe %>
+    </div>
     <% if session[:user_id] %>
     <ul>
       <li><%= link_to 'Edit', edit_news_path(news) %></li>
@@ -19,8 +21,9 @@
     <% end %>
   </div>
   <% end %>
+  <p><%= will_paginate @posts %></p>
   <% if session[:user_id] %>
-  <%= link_to 'New News', new_news_path %>
+  <p><%= link_to 'New News', new_news_path %></p>
   <% end %>
 </div>
 

@@ -1,3 +1,4 @@
+<% title "ARTISTS" %>
 <h1>ARTISTS</h1>
 <div id="artists">
   <% if session[:user_id] %>
@@ -16,7 +17,8 @@
       </ul>
     <% end %>
   </div>
-<% end %>
+  <% end %>
+  <p><%= will_paginate @posts %></p>
 <br />
 </div>
 

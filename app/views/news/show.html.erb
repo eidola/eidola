@@ -1,3 +1,4 @@
+<% title @news.title %>
 <p id="notice"><%= notice %></p>
 <div id="news">
   <div class="news-item">
@@ -6,7 +7,10 @@
     <div class="news-item-title">
       <%= image_tag(@news.image.url(:thumb)) %>
     </div>
-    <div class="summary"><%= markdown(@news.content).html_safe %></div>
+    <div class="summary">
+      <%= markdown(@news.content).html_safe %>
+      <%= render 'layouts/share', :f => @news %>
+    </div>
 
     <% if session[:user_id] %>
     <ul>

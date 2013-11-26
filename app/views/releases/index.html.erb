@@ -1,3 +1,4 @@
+<% title "RELEASES" %>
 <h1>RELEASES</h1>
 <div id="releases">
   <% @releases.each do |release| %>
@@ -20,6 +21,7 @@
     </ul>
   </div>    
   <% end %>
+  <p><%= will_paginate @posts %></p>
   <br />
   <% if session[:user_id] %>
   <%= link_to 'New Release', new_release_path %>
