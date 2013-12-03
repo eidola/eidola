@@ -12,11 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
-//= require jquery-ui
-//= require autocomplete-rails
-//= require bootstrap
-//= require jquery-fileupload
+//= require bootstrap/dropdown
+
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");

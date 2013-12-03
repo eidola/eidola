@@ -48,7 +48,7 @@ class ReleasesController < ApplicationController
     
     respond_to do |format|
       if @release.save
-        download_release(@release)
+
         format.html { redirect_to @release, notice: 'Release was successfully created.' }
         format.json { render json: @release, status: :created, location: @release }
       else
@@ -65,7 +65,6 @@ class ReleasesController < ApplicationController
     
     respond_to do |format|
       if @release.update_attributes(params[:release])
-        download_release(@release)
         format.html { redirect_to @release, notice: 'Release was successfully updated.' }
         format.json { head :no_content }
       else
@@ -85,34 +84,5 @@ class ReleasesController < ApplicationController
       format.html { redirect_to releases_url }
       format.json { head :no_content }
     end
-  end
-  def download_release(release)
-    if release.tracks.count >0
-      file_name = "#{release.title}"
-      t = Tempfile.new([file_name,'.zip'])
-      Zip::ZipOutputStream.open(t.path) do |z|
-        release.tracks.each do |track|
-          title = track.file_file_name
-          z.put_next_entry(title)
-          dest = Tempfile.new(track.file.original_filename)
-          track.file.copy_to_local_file('original', dest.path)
-          z.print IO.read(dest)
-        end
-        if !release.cover.blank?
-          extension = File.extname(release.cover.path).downcase
-          cover = "cover#{extension}"
-          z.put_next_entry(cover)
-          dest = Tempfile.new(release.cover.original_filename)
-          release.cover.copy_to_local_file('original', dest.path)
-          z.print IO.read(dest)
-        end
-      end
-      stream = File.open(t.path)
-      release.zip = stream
-      release.zip_file_name = "#{file_name}.zip"
-      stream.close
-      t.close
-      release.save
-    end              
   end
 end

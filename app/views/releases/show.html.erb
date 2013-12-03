@@ -4,20 +4,26 @@
   <div id="release">
     <div class="title">
       <h1><%= @release.title %></h1>
-	  
-      
     </div>
     <div class="row">
+      <div class="left-col">
       <ul class="artists">
 	<% @release.artists.each do |artist| %>
-	<li><%= link_to artist.name, artist, :class => 'white' %></li>
+	<li class="artist"><%= link_to artist.name, artist, :class => 'white' %></li>
 	<% end %>
-	<li>
-	  <% if @release.zip.content_type == 'application/zip' %>
-	  <%= link_to 'Download', @release.zip.url, :class => 'btn' %>
-	  <% end %>
-	</li>
       </ul>
+      <% if @release.zip.content_type == 'application/zip' %>
+      <div class="dropdown download-link">
+	<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+	  Download <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+	  <li><%= link_to 'OGG', @release.zip.url(:ogg) %></li>
+	  <li><%= link_to 'MP3', @release.zip.url(:mp3) %></li>
+	</ul>
+      </div>
+      <% end %>  
+      </div>
       <%= image_tag(@release.cover.url(:thumb)) %>
       <table class="tracks">
 	<thead>
@@ -35,20 +41,19 @@
 	    <td>
 	      <audio controls>
 		<source src="<%= track.file.url(:mp3) %>" type="audio/mp3">
-		<source src="<%= track.file.url(:ogg) %>" type="audio/ogg">
+		  <source src="<%= track.file.url(:ogg) %>" type="audio/ogg">
 	      </audio>
 	    </td>
 	    <% end %>
 	</tbody>
-      </table>  
-
+      </table>
     </div>
     <div class="description"><%= markdown(@release.description).html_safe %></div>
-    
   </div>
   <div class="btn-ctrls">
     <% if session[:user_id] %>
     <%= link_to 'Edit', edit_release_path(@release), :class => 'btn' %> |
+    <%= link_to 'Delete', @release, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %>
     <% end %>
     <%= link_to 'Back', releases_path, :class => 'btn' %>
   </div>

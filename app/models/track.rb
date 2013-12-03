@@ -13,4 +13,5 @@ class Track < ActiveRecord::Base
       :format => "mp3"
     }
   }
+  validates_attachment_content_type :file, :content_type => "audio/wav"
 end

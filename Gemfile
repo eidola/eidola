@@ -23,7 +23,7 @@ gem 'rails-i18n'
 gem 'random_record'
 gem 'will_paginate', '~> 3.0'
 gem 'jquery-fileupload-rails'
-
+gem 'taglib-ruby'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

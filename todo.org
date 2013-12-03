@@ -1,0 +1,3 @@
+EIDOLA RECORDS TO DO
+* TODO Fix download links to use bootstrap dropdrown button / or restyle, reimplement the functionality seperately
+* TODO Add custom renderer to pagination to use bootstrap style or restyle seperately.

@@ -40,12 +40,25 @@
 		padding: 0 10px;
 	    }
 	}
+	ul{
+	    position: absolute;
+	    top: 0;
+	    width: 100%;
+	    list-style: none;
+	    background-color: rgba(164,0,0,0.5);
+	    li{
+		float: left;
+		margin-right: 10px;
+		color: #fff;
+		font-size: 24px;
+	    }
+	}
     }
 }
 #release {
     min-width: 955px;
     
-    div.title {
+    div.title { 
 	width: 90%;
 	height: 58px;
 	
@@ -63,30 +76,34 @@
     div.row {
 	min-height:310px;
 	position: relative;
-	ul.artists {
+	div.left-col{
 	    width: 150px;
 	    float:left;
-	    display: inline;
-	    list-style: none;
-	    li {
-		margin-right: 10px;
-		a{
-		    margin-bottom: 5px;
-		    margin-top: 5px;
-		    float:right;
-		    text-align: right;
-		    
+	    div.download-link{
+		float:right;
+	    }
+	    ul.artists {
+		display: inline;
+		list-style: none;
+		li.artist {
+		    margin-right: 10px;
+		    a{
+			margin-bottom: 5px;
+			margin-top: 5px;
+			float:right;
+			text-align: right;
+			
+		    }
+		    a.white {
+			background-color: rgb(0,0,0);
+			background-color: rgba(0,0,0,0.5);
+			border-radius: 6px;
+			padding: 6px;
+		    }
+		    a:hover {
+			background-color: rgba(164,0,0,0.5);
+		    }
 		}
-		a.white {
-		    background-color: rgb(0,0,0);
-		    background-color: rgba(0,0,0,0.5);
-		    border-radius: 6px;
-		    padding: 6px;
-		}
-		a:hover {
-		    background-color: rgba(164,0,0,0.5);
-		}
-		
 	    }
 	}
 	img {
@@ -127,7 +144,7 @@
     div.description {
 	margin-left: 200px;
     }
- 
+    
 }
 div.btn-ctrls {
     margin-left: 200px;

@@ -13,7 +13,6 @@
   <p><%= markdown(@artist.description).html_safe %></p>
   <% if session[:user_id] %>
   <%= link_to 'Edit', edit_artist_path(@artist) %> |
-  <%= link_to 'Delete', @artist, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
   <%= link_to 'Back', artists_path, :class => 'btn' %>
 </div>

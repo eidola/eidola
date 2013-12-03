@@ -3,6 +3,9 @@ module Paperclip
     
     def initialize(file, options = {}, attachment = nil)
       super
+      @instance = attachment.instance
+      @title = @instance.title
+      @track = @instance.number
       @file = file
       @i = File.extname(@file.path).gsub('.','')
       @o = options[:format]
@@ -10,13 +13,11 @@ module Paperclip
     end
     
     def make
-      dst = Tempfile.new([@basename,".#{@o}"])
-      if @i == "mp3" && @o == "ogg"
-        cmd = " -i \"#{File.expand_path(@file.path)}\" -acodec libvorbis -ac 2 \"#{File.expand_path(dst.path)}\""
-      elsif @i == "wav" && @o == "ogg"
-        cmd = " -i \"#{File.expand_path(@file.path)}\" -acodec libvorbis \"#{File.expand_path(dst.path)}\""   
+      dst = Tempfile.new([@title,".#{@o}"])
+      if @i == "wav" && @o == "ogg"
+        cmd = " -y -i \"#{File.expand_path(@file.path)}\" -acodec libvorbis \"#{File.expand_path(dst.path)}\""   
       elsif @i == "wav" && @o == "mp3"
-        cmd = " -i \"#{File.expand_path(@file.path)}\" -acodec libmp3lame \"#{File.expand_path(dst.path)}\""
+        cmd = " -y -i \"#{File.expand_path(@file.path)}\" -acodec libmp3lame \"#{File.expand_path(dst.path)}\""
       end
       dst.binmode
       begin
@@ -25,7 +26,6 @@ module Paperclip
         raise "conversion failed."
       end
       dst
-      
     end
   end
 end
