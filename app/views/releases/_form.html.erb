@@ -25,6 +25,10 @@
     <%= f.text_area :description, :class => "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.label :date %><br />
+    <%= f.date_select :date, :class => "form-control" %>
+  </div>
+  <div class="form-group">
     <%= f.fields_for :tracks do |t| %>
       <%= render 'track_fields', :f => t %>
     <% end %>

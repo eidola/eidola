@@ -4,17 +4,27 @@ class Release < ActiveRecord::Base
   has_many :artists, :through => :artist_releases
   has_many :tracks, :dependent => :destroy
   accepts_nested_attributes_for :tracks, :reject_if => lambda { |a| a[:title].blank? }, :allow_destroy => true
-  attr_accessible :description, :title, :artist_name, :cover, :tracks_attributes, :zip
+  attr_accessible :description, :title, :artist_name, :cover, :tracks_attributes, :zip, :date
   validates :title, :description, :artist_name, presence: true
   has_attached_file :cover, :styles => { :medium => "300x300#", :thumb => "200x200#" },
   :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
   :url => "/system/:attachment/:id/:style/:filename"
   has_attached_file :zip,
-  :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-  :url => "/system/:attachment/:id/:style/:filename"
+  :path => ":rails_root/public/system/releases/:id/:style/:filename",
+  :url => "/system/releases/:id/:style/:filename",
+  :processors => [:zip_processor],
+  :styles => {
+    :ogg => {
+      :audio => "ogg"
+    },
+    :mp3 => {
+      :audio => "mp3"
+    }
+  }
   
 
-  after_save :create_zips
+  #after_save :create_zips
+  before_save :convert_tracks, :add_default_zip
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
@@ -23,7 +33,7 @@ class Release < ActiveRecord::Base
     ["mp3","ogg"]
   end
 
-  def create_zips
+  def convert_tracks
     if self.tracks.count > 0
       self.tracks.each do |track|
         formats.each do |format|
@@ -36,14 +46,40 @@ class Release < ActiveRecord::Base
               tag.album = self.title
               tag.track = track.number
               tag.comment = "Eidola Records"
+              tag.year = self.date.year
               fileref.save
             end
           end
         end
       end
     end
-    formats.each do |format|
-      create_zip format
+  end
+
+  def add_default_zip
+    if self.tracks.count > 0
+      @file_name = "#{self.title}"
+      t = Tempfile.new([@file_name, '.zip'])
+      Zip::ZipOutputStream.open(t.path) do |z|
+        self.tracks.each do |track|
+          title = File.basename(track.file.path)
+          z.put_next_entry(title)
+          z.print IO.read(track.file.path)
+        end
+        if !self.cover.blank?
+          extension = File.extname(self.cover.path).downcase
+          cover = "cover#{extension}"
+          z.put_next_entry(cover)
+          dest = Tempfile.new(self.cover.original_filename)
+          self.cover.copy_to_local_file('original', dest.path)
+          z.print IO.read(dest)
+        end
+      end
+      t.close
+      
+      File.open(t.path) do |file|
+        self.zip = file
+        self.zip_file_name = "#{@file_name}.zip"
+      end
     end
   end
 

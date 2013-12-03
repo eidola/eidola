@@ -12,17 +12,18 @@
 	<li class="artist"><%= link_to artist.name, artist, :class => 'white' %></li>
 	<% end %>
       </ul>
-      <% if @release.zip.content_type == 'application/zip' %>
+      
       <div class="dropdown download-link">
 	<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
 	  Download <span class="caret"></span>
 	</button>
 	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+	  <li><%= link_to 'WAV', @release.zip.url %></li>
 	  <li><%= link_to 'OGG', @release.zip.url(:ogg) %></li>
 	  <li><%= link_to 'MP3', @release.zip.url(:mp3) %></li>
 	</ul>
       </div>
-      <% end %>  
+      
       </div>
       <%= image_tag(@release.cover.url(:thumb)) %>
       <table class="tracks">

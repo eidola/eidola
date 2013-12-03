@@ -1,3 +1,6 @@
 EIDOLA RECORDS TO DO
-* TODO Fix download links to use bootstrap dropdrown button / or restyle, reimplement the functionality seperately
+* DONE Fix download links to use bootstrap dropdrown button / or restyle, reimplement the functionality seperately
 * TODO Add custom renderer to pagination to use bootstrap style or restyle seperately.
+* TODO Set zip file stream
+  Setting the zip file stream only works by calling save but can only work if it has the id which isn't available until after_save so we get into a loop. If the before_save call_back is used it works correctly on update as the id exists but on create there is no id so the zips do not show up.
+  The next thing to try is to create a processor for the zips. 
