@@ -8,8 +8,8 @@
 /.bundle
 
 # Ignore the default SQLite database.
-/db/*
-/public/*
+/db/eidola_development
+/public/system/*
 /config/database*
 # Ignore all logfiles and tempfiles.
 /log/*.log
