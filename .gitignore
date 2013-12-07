@@ -9,7 +9,8 @@
 
 # Ignore the default SQLite database.
 /db/*
-
+/public/*
+/config/database*
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
