@@ -23,17 +23,15 @@ class Release < ActiveRecord::Base
   }
   
 
-  #after_save :create_zips
-  before_save :convert_tracks, :add_default_zip
-
+  
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
 
   def formats
-    ["mp3","ogg"]
+    ["original","mp3","ogg"]
   end
 
-  def convert_tracks
+  def tag_tracks
     if self.tracks.count > 0
       self.tracks.each do |track|
         formats.each do |format|
@@ -54,7 +52,7 @@ class Release < ActiveRecord::Base
       end
     end
   end
-
+  
   def add_default_zip
     if self.tracks.count > 0
       @file_name = "#{self.title}"
@@ -75,42 +73,13 @@ class Release < ActiveRecord::Base
         end
       end
       t.close
-      
       File.open(t.path) do |file|
         self.zip = file
         self.zip_file_name = "#{@file_name}.zip"
       end
+      t.unlink
+      self.save
     end
-  end
-
-  def create_zip (format)
-    @style = format
-    @path = "#{::Rails.root}/public/system/zips/#{self.id}/#{@style}/"
-    puts @path
-    if self.tracks.count >0
-      file_name = "#{self.title}"
-      t = Tempfile.new([file_name,'.zip'])
-      Zip::ZipOutputStream.open(t.path) do |z|
-        self.tracks.each do |track|
-          title = File.basename(track.file.path(format))
-          z.put_next_entry(title)
-          puts track.file.path(format)
-          z.print IO.read(track.file.path(format))
-        end
-        if !self.cover.blank?
-          extension = File.extname(self.cover.path).downcase
-          cover = "cover#{extension}"
-          z.put_next_entry(cover)
-          dest = Tempfile.new(self.cover.original_filename)
-          self.cover.copy_to_local_file('original', dest.path)
-          z.print IO.read(dest)
-        end
-      end
-      @file_path = "#{@path}#{file_name}.zip"
-      FileUtils.mkdir_p(File.dirname(@file_path))
-      FileUtils.cp(t.path, @file_path)
-      t.close
-    end        
   end
 
   def artist_name

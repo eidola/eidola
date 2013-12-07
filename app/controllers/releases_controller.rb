@@ -48,7 +48,8 @@ class ReleasesController < ApplicationController
     
     respond_to do |format|
       if @release.save
-
+        @release.tag_tracks
+        @release.add_default_zip
         format.html { redirect_to @release, notice: 'Release was successfully created.' }
         format.json { render json: @release, status: :created, location: @release }
       else
@@ -65,6 +66,8 @@ class ReleasesController < ApplicationController
     
     respond_to do |format|
       if @release.update_attributes(params[:release])
+        @release.tag_tracks
+        @release.add_default_zip
         format.html { redirect_to @release, notice: 'Release was successfully updated.' }
         format.json { head :no_content }
       else
