@@ -1,0 +1,20 @@
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Controls</td>
+    <tr>
+  </thead>
+  <tbody>
+    <% f.each do |artist| %>
+    <tr>
+      <td><%= artist.name %></td>
+      <td>
+	<%= link_to 'Edit', edit_artist_path(artist), :class => "btn" %>
+	<%= button_to 'Delete', artist, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn" %>
+	<%= link_to 'Show', artist, :class => "btn" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

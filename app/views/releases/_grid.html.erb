@@ -1,0 +1,14 @@
+<% f.each do |release| %>
+<div class="release">
+  <%= link_to release, :title=> release.title, :class => 'white' do %>
+  <h1>
+    <%= release.title %><br/>
+    <% release.artists.each do |artist| %>
+    <%= artist.name %>
+    <% end %>
+  </h1>
+  <%= image_tag(release.cover.url(:thumb)) %>
+  <% end %>
+</div>    
+<% end %>
+

@@ -3,6 +3,7 @@
 <div id="news">
   <% if session[:user_id] %>
   <%= render 'table', :f => @news_all %>
+  <%= link_to 'New News', new_news_path, :class => "btn" %>
   <% else %>
   <%= render 'grid', :f => @news %>
   <% end %>

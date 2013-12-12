@@ -1,3 +1,4 @@
+<% if @release.published? || session[:user_id] %>
 <% title @release.title %>
 <p id="notice"><%= notice %></p>
 <div id="content">
@@ -59,4 +60,4 @@
     <%= link_to 'Back', releases_path, :class => 'btn' %>
   </div>
 </div>
-
+<% end %>

@@ -1,0 +1,22 @@
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <td>Title</td>
+      <td>Publication Date</td>
+      <td>Controls</td>
+    <tr>
+  </thead>
+  <tbody>
+    <% f.each do |release| %>
+    <tr>
+      <td><%= release.title %></td>
+      <td><%= release.date %></td>
+      <td>
+	<%= link_to 'Edit', edit_release_path(release), :class => "btn" %>
+	<%= link_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn" %>
+	<%= link_to 'Show', release, :class => "btn" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

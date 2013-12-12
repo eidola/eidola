@@ -2,24 +2,13 @@
 <h1>ARTISTS</h1>
 <div id="artists">
   <% if session[:user_id] %>
-    <div><%= link_to 'New Artist', new_artist_path %></div>
+  <%= render 'table', :f => @artists_all %>
+  <%= link_to 'New Artist', new_artist_path, :class => "btn" %>
+  <p><%= will_paginate @artists_all %></p>
+  <% else %>
+  <%= render 'grid', :f => @artists %>
+  <p><%= will_paginate @artists %></p>
   <% end %>
-  <% @artists.each do |artist| %>
-  <div class="artist">
-      <%= link_to artist, :title=> artist.name, :class => 'white' do %>
-      <%= image_tag(artist.image.url(:thumb)) %>
-      <h1><%= artist.name %></h1>
-      <% end %>
-      <% if session[:user_id] %>
-      <ul>
-	<li><%= link_to 'Edit', edit_artist_path(artist) %></li>
-	<li><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-      </ul>
-    <% end %>
-  </div>
-  <% end %>
-  <p><%= will_paginate @posts %></p>
-<br />
 </div>
 
 

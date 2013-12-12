@@ -1,30 +1,13 @@
 <% title "RELEASES" %>
 <h1>RELEASES</h1>
 <div id="releases">
-  <% @releases.each do |release| %>
-  <div class="release">
-    <% if session[:user_id] %>    
-    <ul>
-      <li><%= link_to 'Show', release, :class => "btn" %></li>
-      <li><%= link_to 'Edit', edit_release_path(release), :class => "btn" %></li>
-      <li><%= button_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn" %></li>
-    </ul>
-    <% end %>
-    <%= link_to release, :title=> release.title, :class => 'white' do %>
-    <h1>
-      <%= release.title %><br/>
-      <% release.artists.each do |artist| %>
-      <%= artist.name %>
-      <% end %>
-    </h1>
-    <%= image_tag(release.cover.url(:thumb)) %>
-    <% end %>
-  </div>    
-  <% end %>
-  <p><%= will_paginate @posts %></p>
-  <br />
-  <% if session[:user_id] %>
-  <%= link_to 'New Release', new_release_path %>
+  <% if session[:user_id] %>    
+  <% render 'table', :f => @releases_all %>
+  <%= link_to 'New Release', new_release_path, :class => "btn" %>
+  <p><%= will_paginate @releases_all %></p>
+  <% else %>
+  <% render 'grid', :f => @releases %>
+  <p><%= will_paginate @releases %></p>
   <% end %>
 </div>
 

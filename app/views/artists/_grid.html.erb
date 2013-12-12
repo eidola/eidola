@@ -1,0 +1,8 @@
+<% f.each do |artist| %>
+<div class="artist">
+  <%= link_to artist, :title=> artist.name, :class => 'white' do %>
+  <%= image_tag(artist.image.url(:thumb)) %>
+  <h1><%= artist.name %></h1>
+  <% end %>
+</div>
+<% end %>

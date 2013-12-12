@@ -5,8 +5,8 @@ class ReleasesController < ApplicationController
   # GET /releases
   # GET /releases.json
   def index
-    @releases = Release.paginate(:page => params[:page], :per_page => 9)
-    
+    @releases = Release.published.paginate(:page => params[:page], :per_page => 9)
+    @releases_all = Release.paginate(:page => params[:page], :per_page => 25)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @releases }

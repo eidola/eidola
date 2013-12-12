@@ -27,6 +27,20 @@ class Release < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
 
+  scope :published, lambda { {:conditions => ["date <= ?", Time.now]} }
+  scope :unpublished, lambda { {:conditions => ["date > ?", Time.now]} }
+
+  def published?
+    if(date <=  Date.today)
+      @p = true
+    else
+      @p = false
+    end
+    puts "[published] %s" % @p
+    @p
+  end
+
+
   def formats
     ["original","mp3","ogg"]
   end
