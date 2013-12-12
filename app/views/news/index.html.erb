@@ -1,33 +1,9 @@
 <% title "NEWS" %>
 <h1>News</h1>  
 <div id="news">
-  <% @news.each do |news| %>
-  <div class="news-item" itemscope itemtype="http://schema.org/Blog">
-    <div class="date"><%= l news.date, :format => "%d %B, %Y" =%></div>
-    <div class="news-item-title">
-      <%= link_to news, :title=> news.title, :class => 'white' do %>
-      <%= image_tag(news.image.url(:thumb)) %>
-      <h1 itemprop="name"><%= news.title %></h1>
-      <% end %>
-    </div>
-    <div class="summary" itemprop="description">
-      <%= markdown(news.content).html_safe %>
-
-    </div>
-    <% if session[:user_id] %>
-    <ul>
-      <li><%= link_to 'Edit', edit_news_path(news) %></li>
-      <li><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-    </ul>
-    <% end %>
-  </div>
-  <% end %>
-  <p>
-    <%= will_paginate @posts %>
-  </p>
   <% if session[:user_id] %>
-  <p><%= link_to 'New News', new_news_path %></p>
+  <%= render 'table', :f => @news_all %>
+  <% else %>
+  <%= render 'grid', :f => @news %>
   <% end %>
 </div>
-
-

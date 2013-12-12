@@ -1,0 +1,17 @@
+<% f.each do |news| %>
+  <div class="news-item" itemscope itemtype="http://schema.org/Blog">
+    <div class="date"><%= l news.date, :format => "%d %B, %Y" =%></div>
+    <div class="news-item-title">
+      <%= link_to news, :title=> news.title, :class => 'white' do %>
+      <%= image_tag(news.image.url(:thumb)) %>
+      <h1 itemprop="name"><%= news.title %></h1>
+      <% end %>
+    </div>
+    <div class="summary" itemprop="description">
+      <%= markdown(news.content).html_safe %>
+    </div>
+  </div>
+  <p>
+    <%= will_paginate @posts %>
+  </p>
+<% end %>
