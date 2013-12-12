@@ -2,16 +2,17 @@
 <h1>News</h1>  
 <div id="news">
   <% @news.each do |news| %>
-  <div class="news-item">
+  <div class="news-item" itemscope itemtype="http://schema.org/Blog">
     <div class="date"><%= l news.date, :format => "%d %B, %Y" =%></div>
     <div class="news-item-title">
       <%= link_to news, :title=> news.title, :class => 'white' do %>
       <%= image_tag(news.image.url(:thumb)) %>
-      <h1><%= news.title %></h1>
+      <h1 itemprop="name"><%= news.title %></h1>
       <% end %>
     </div>
-    <div class="summary">
+    <div class="summary" itemprop="description">
       <%= markdown(news.content).html_safe %>
+
     </div>
     <% if session[:user_id] %>
     <ul>
@@ -28,6 +29,5 @@
   <p><%= link_to 'New News', new_news_path %></p>
   <% end %>
 </div>
-
 
 

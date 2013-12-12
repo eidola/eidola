@@ -7,11 +7,11 @@ class Release < ActiveRecord::Base
   attr_accessible :description, :title, :artist_name, :cover, :tracks_attributes, :zip, :date
   validates :title, :description, :artist_name, presence: true
   has_attached_file :cover, :styles => { :medium => "300x300#", :thumb => "200x200#" },
-  :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-  :url => "/system/:attachment/:id/:style/:filename"
+  :path => ":rails_root/public/releases/:id/:attachment/:style/:filename",
+  :url => "/releases/:id/:attachment/:style/:filename"
   has_attached_file :zip,
-  :path => ":rails_root/public/system/releases/:id/:style/:filename",
-  :url => "/system/releases/:id/:style/:filename",
+  :path => ":rails_root/public/releases/:id/:attachment/:style/:filename",
+  :url => "/releases/:id/:attachment/:style/:filename",
   :processors => [:zip_processor],
   :styles => {
     :ogg => {
