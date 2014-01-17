@@ -5,11 +5,11 @@
 <div id="news">
   <div class="news-item">
     <h1><%= @news.title %></h1>    
-    <div class="date"><%= l @news.date, :format => "%d %B, %Y" =%></div>
+    <div class="date"><%= l @news.date, :format => "%d %b %Y" =%></div>
     <div class="news-item-title">
       <%= image_tag(@news.image.url(:thumb)) %>
     </div>
-    <div class="summary">
+    <div class="news-text">
       <%= markdown(@news.content).html_safe %>
 
     </div>

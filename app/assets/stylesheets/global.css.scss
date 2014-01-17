@@ -52,6 +52,8 @@ body{
     p {
 	font-family: 'Junction';
 	line-height: 1.2em;
+	font-size: 12px;
+	text-align: justify;
     }
     a.black,
     a.black:hover,
@@ -75,6 +77,7 @@ body{
 	min-width: 955px;
     }
     .date {
+	text-transform:uppercase;
     }
     .btn,
     .btn:active,
