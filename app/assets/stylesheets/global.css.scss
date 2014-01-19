@@ -1,10 +1,9 @@
 @import "bootstrap";
 @import url("/assets/leaguegothic/stylesheet.css");
 @import url("/assets/junction/stylesheet.css");
-
+@import url("/assets/blackout/stylesheet.css");
 body{
     margin: 0 auto;
-
     header{
 	position: fixed;
 	top: 0;
@@ -77,6 +76,8 @@ body{
 	min-width: 955px;
     }
     .date {
+	color: #a40000;
+	font-family: 'blackout';
 	text-transform:uppercase;
     }
     .btn,

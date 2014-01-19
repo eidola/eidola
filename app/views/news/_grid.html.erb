@@ -1,12 +1,12 @@
 <% f.each do |news| %>
   <div class="news-item" itemscope itemtype="http://schema.org/Blog">
     <%= link_to news, :title=> news.title, :class => 'black' do %>    
-    <span class="date"><%= l news.date, :format => "%d %b %Y" =%></span>    
     <h1 itemprop="name"><%= news.title %></h1>
+    <p class="date"><%= l news.date, :format => "%d %b %Y" =%></p>
     <div class="news-item-title">
       <%= image_tag(news.image.url(:thumb)) %>
     </div>
-    <div class="news-text summary" itemprop="description">
+    <div class="news-text summary ellipsis" itemprop="description">
       <%= markdown(news.content).html_safe %>
     </div>
     <% end %>

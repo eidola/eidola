@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap/dropdown
-
+//= require jquery.autoellipsis-1.0.10.min.js
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
@@ -25,3 +25,9 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g")
   $(link).parent().before(content.replace(regexp, new_id));
 }
+
+(function($) {
+    $(document).ready(function() {
+	$('.ellipsis').ellipsis();
+    });
+})(jQuery);
