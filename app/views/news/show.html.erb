@@ -1,5 +1,4 @@
 <% if @news.published? || session[:user_id] %>
-
 <% title @news.title %>
 <p id="notice"><%= notice %></p>
 <div id="news">
@@ -11,9 +10,7 @@
     </div>
     <div class="news-text">
       <%= markdown(@news.content).html_safe %>
-
     </div>
-
     <% if session[:user_id] %>
     <ul>
       <li><%= link_to 'Edit', edit_news_path(@news) %></li>

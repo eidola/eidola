@@ -3,7 +3,7 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.json
   def index
-    @artists = Artist.paginate(:page => params[:page], :per_page => 9)
+    @artists = Artist.paginate(:page => params[:page], :per_page => 9).order('name asc')
     @artists_all = Artist.paginate(:page => params[:page], :per_page => 25)
     respond_to do |format|
       format.html # index.html.erb

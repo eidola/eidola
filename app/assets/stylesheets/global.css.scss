@@ -51,7 +51,7 @@ body{
     p {
 	font-family: 'Junction';
 	line-height: 1.2em;
-	font-size: 12px;
+	font-size: 14px;
 	text-align: justify;
     }
     a.black,
@@ -76,8 +76,10 @@ body{
 	min-width: 955px;
     }
     .date {
+	font-size: 30px;
+	padding: 5px;
 	color: #a40000;
-	font-family: 'blackout';
+	font-family: 'blackout-midnight';
 	text-transform:uppercase;
     }
     .btn,
